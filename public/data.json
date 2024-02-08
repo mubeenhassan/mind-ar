@@ -1,0 +1,66 @@
+[
+    {
+        "dashboard_id": 1,
+        "marker_id": "00",
+        "videoUrl": "https://svs.gsfc.nasa.gov/vis/a000000/a004900/a004975/GISTEMP_Spiral_2022-03-06_1851_1080sq.mp4",
+        "textDescription": "The visualization presents monthly global temperature anomalies between the years 1880-2021. These temperatures are based on the GISS Surface Temperature Analysis (GISTEMP v4), an estimate of global surface temperature change. Anomalies are defined relative to a base period of 1951-1980.",
+        "urlList": [
+            "https://svs.gsfc.nasa.gov/vis/a000000/a004900/a004975/",
+            "https://go.nasa.gov/eic"
+        ],
+        "additionalText": "An animated view of NASA's Earth observing fleet, as it looks today. This 30 second visualization is updated once per day. Time shown in UTC. This version is a square aspect ratio (2160x2160) with no star background.",
+        "imageUrl": "https://svs.gsfc.nasa.gov/vis/a000000/a005000/a005067/fleet_today_30sec_nostars_sq.mp4"
+    },
+    {
+        "dashboard_id": 2,
+        "marker_id": "01",
+        "videoUrl": "https://svs.gsfc.nasa.gov/vis/a000000/a005000/a005067/fleet_today_30sec_nostars_sq.mp4",
+        "textDescription": "Educational content about space exploration.",
+        "urlList": [
+            "https://example.com/resource1",
+            "https://example.com/resource2",
+            "https://example.com/resource3"
+        ],
+        "additionalText": "Featuring an interview with an astronaut.",
+        "imageUrl": "https://example.com/images/image2.jpg"
+    },
+    {
+        "dashboard_id": 3,
+        "marker_id": "02",
+        "videoUrl": "https://svs.gsfc.nasa.gov/vis/a000000/a005000/a005067/fleet_today_30sec_nostars_sq.mp4",
+        "textDescription": "A documentary on marine life.",
+        "urlList": [
+            "https://example.com/marine1",
+            "https://example.com/marine2",
+            "https://example.com/marine3"
+        ],
+        "additionalText": "Exploring the depths of the ocean.",
+        "imageUrl": "https://example.com/images/image3.jpg"
+    },
+    {
+        "dashboard_id": 4,
+        "marker_id": "03",
+        "videoUrl": "https://svs.gsfc.nasa.gov/vis/a000000/a005000/a005067/fleet_today_30sec_nostars_sq.mp4",
+        "textDescription": "Tutorial on advanced baking techniques.",
+        "urlList": [
+            "https://example.com/baking1",
+            "https://example.com/baking2",
+            "https://example.com/baking3"
+        ],
+        "additionalText": "Learn to bake like a pro.",
+        "imageUrl": "https://example.com/images/image4.jpg"
+    },
+    {
+        "dashboard_id": 5,
+        "marker_id": "04",
+        "videoUrl": "https://svs.gsfc.nasa.gov/vis/a000000/a005000/a005067/fleet_today_30sec_nostars_sq.mp4",
+        "textDescription": "A short film about friendship and resilience.",
+        "urlList": [
+            "https://example.com/film1",
+            "https://example.com/film2",
+            "https://example.com/film3"
+        ],
+        "additionalText": "Award-winning short film from an independent filmmaker.",
+        "imageUrl": "https://example.com/images/image5.jpg"
+    }
+]

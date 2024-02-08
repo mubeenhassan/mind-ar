@@ -1,0 +1,105 @@
+/* src/styles.css */
+.control-buttons {
+  position: relative;
+  z-index: 1000;
+}
+
+.App {
+  text-align: center;
+}
+
+.control-buttons {
+  position: relative;
+  z-index: 1000;
+}
+
+.AR_Scanner{
+  margin: 20px auto;
+  position: relative;
+  max-width: 500px;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+}
+
+/* Custom CSS for Header component */
+.header {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu li {
+  margin-right: 1rem;
+}
+
+.nav-menu li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.marker-slider-container {
+  padding: 0rem 1rem;
+  background: lightgray;
+}
+
+.marker-slider-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0rem;
+}
+
+.marker-slider {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 0rem 2rem
+}
+
+.slider-item {
+  padding: 1rem;
+}
+
+.slider-item-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.slider-item-description {
+  margin-bottom: 1rem;
+}
+
+.slider-video {
+  max-width: 600px;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.slider-url-list {
+  font-size: 1.25rem;
+}
+
+.slider-image {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
