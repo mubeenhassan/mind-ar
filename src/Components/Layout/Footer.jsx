@@ -1,12 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
+import GuidePopup from '../Elements/GuidePopup';
 
 const Footer = () => {
+  const [showPopup, setShowPopup] = useState(false);
   return (
-    <footer className="bg-gray-800 text-white py-4">
-      <div className="container mx-auto flex justify-center">
-        {/* Add footer content here */}
-        <p>&copy; 2024 My App. All rights reserved.</p>
-      </div>
+    <footer className="footer-container">
+      <button className="footer-button">English</button>
+      <button className="footer-button" onClick={()=>setShowPopup(true)}>Help</button>
+      <button className="footer-button">Share</button>
+      {showPopup && <GuidePopup onClose={()=>setShowPopup(false)} />}
     </footer>
   );
 };

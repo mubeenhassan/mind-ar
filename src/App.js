@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MarkerSlider from './Components/Pages/MarkerSlider';
 import HomePage from './Components/Pages/HomePage';
@@ -5,6 +6,7 @@ import './App.css';
 import Layout from "./Components/Layout";
 
 const App = () => {
+  
   return (
     <BrowserRouter>
       <Layout>
@@ -15,6 +17,8 @@ const App = () => {
           {/* <Route path="*" element={<NoPage />} /> */}
         </Routes>
       </Layout>
+      {/* Show the popup if showPopup is true */}
+      
     </BrowserRouter>
   );
 };
