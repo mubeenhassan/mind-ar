@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'; // Change navigate to useNavigate
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-
+import CustomSlider from '../Elements/CustomSlider';
 const MarkerSlider = () => {
   const { targetId } = useParams();
   const [targetData, setTargetData] = useState(null);
@@ -29,23 +26,6 @@ const MarkerSlider = () => {
     fetchData();
   }, [targetId, useNavigate]); // Change navigate to useNavigate
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: false,
-    adaptiveHeight: true,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          arrows: false,
-        },
-      },
-    ],
-  };
 
   if (loader) {
     return <h1>Loading...</h1>;
@@ -54,8 +34,9 @@ const MarkerSlider = () => {
   return (
     <div className="marker-slider-container">
       <h1 className="marker-slider-title">Marker ID {targetId}</h1>
+      <div className="marker-slider">
       {targetData && (
-        <Slider {...settings} className="marker-slider">
+        <CustomSlider>
           <div className="slider-item">
             <h3 className="slider-item-title">Dashboard ID: {targetData.dashboard_id}</h3>
             <p className="slider-item-description">{targetData.textDescription}</p>
@@ -85,9 +66,11 @@ const MarkerSlider = () => {
                 <img src={targetData.imageUrl} alt="marker" className="slider-image" />
               </div>
             )}
-          </div>
-        </Slider>
+            </div>
+        </CustomSlider>
       )}
+          </div>
+
     </div>
   );
 };

@@ -5,7 +5,6 @@
 }
 .control-buttons {
   position: relative;
-  z-index: 2;
 }
 
 ul, li{
@@ -15,11 +14,6 @@ ul, li{
 
 .App {
   text-align: center;
-}
-
-.control-buttons {
-  position: relative;
-  z-index: 2;
 }
 
 .AR_Scanner{
@@ -70,6 +64,7 @@ ul, li{
 .marker-slider-container {
   padding: 0rem 1rem;
   background: lightgray;
+  height: 75vh;
 }
 
 .marker-slider-title {
@@ -86,6 +81,7 @@ ul, li{
 
 .slider-item {
   padding: 1rem;
+  margin: auto;
 }
 
 .slider_item h1{
@@ -187,17 +183,32 @@ ul, li{
   position: absolute;
   bottom: 5vh;
   left: 32px;
-  background-color: #0a99ff;
+  background-color: black;
   border: none;
   cursor: pointer;
-  font-size: 32px;
-  color: black;
+  font-size: 50px;
+  color: #0a99ff;
   width: 60px;
   height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 8px;
+}
+
+.button {
+  background-color: black;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 600;
+  color: #0a99ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  margin: auto;
 }
 
 /* Additional styling for the slider can be added here */
