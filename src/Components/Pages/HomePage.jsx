@@ -15,8 +15,8 @@ const HomePage = () => {
     <div className="App">
       <h1>Example React component with MindAR</h1>
       <div className="control-buttons">
-        {started === null && <button onClick={() => {setStarted('aframe')}}>Start Scanning</button>}
-        {started !== null && <button onClick={() => {setStarted(null)}}>Stop</button>}
+        {started === null && <button className="button" onClick={() => {setStarted('aframe')}}>Start Scanning</button>}
+        {started !== null && <button className="button" onClick={() => {setStarted(null)}}>Stop</button>}
       </div>
       {started === 'aframe' && (
         <div className="AR_Scanner">
