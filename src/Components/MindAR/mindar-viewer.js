@@ -29,7 +29,7 @@ const ARScene = () => {
     imageTargets.forEach((target, index) => {
       target.addEventListener('targetFound', () => {
         console.log('targetIndex:', index);
-        navigate(`/marker/${index+1}`);
+        navigate(`/marker/${index + 1}`);
       });
     });
   }, [data, navigate]);
