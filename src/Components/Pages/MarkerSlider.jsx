@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom'; // Change navigate to useNavigate
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -27,7 +27,7 @@ const MarkerSlider = () => {
     };
 
     fetchData();
-  }, [targetId]);
+  }, [targetId, useNavigate]); // Change navigate to useNavigate
 
   const settings = {
     dots: true,
@@ -61,13 +61,6 @@ const MarkerSlider = () => {
             <p className="slider-item-description">{targetData.textDescription}</p>
           </div>
           <div className="slider-item">
-            <h2 className="slider-item-title">Video</h2>
-            <video controls className="slider-video">
-              <source src={targetData.videoUrl} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <div className="slider-item">
             <ul className="slider-url-list">
               <h2 className="slider-item-title">List of URLs</h2>
               {targetData.urlList.map((url, idx) => (
@@ -79,19 +72,19 @@ const MarkerSlider = () => {
           </div>
           <div className="slider-item">
             {targetData.imageUrl.includes('.mp4') ? (
-            <div className="slider-item">
-              <h2 className="slider-item-title">Video</h2>
-              <video controls className="slider-video">
-                <source src={targetData.imageUrl} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          ) : (
-            <div className="slider-item">
-              <h2 className="slider-item-title">Main Image</h2>
-              <img src={targetData.imageUrl} alt="marker" className="slider-image" />
-            </div>
-          )}
+              <div className="slider-item">
+                <h2 className="slider-item-title">Video</h2>
+                <video controls className="slider-video">
+                  <source src={targetData.imageUrl} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            ) : (
+              <div className="slider-item">
+                <h2 className="slider-item-title">Main Image</h2>
+                <img src={targetData.imageUrl} alt="marker" className="slider-image" />
+              </div>
+            )}
           </div>
         </Slider>
       )}
