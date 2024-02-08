@@ -1,7 +1,16 @@
+
 /* src/styles.css */
+*{
+  box-sizing: border-box;
+}
 .control-buttons {
   position: relative;
-  z-index: 1000;
+  z-index: 2;
+}
+
+ul, li{
+  list-style: none;
+  padding: 0px;
 }
 
 .App {
@@ -10,7 +19,7 @@
 
 .control-buttons {
   position: relative;
-  z-index: 1000;
+  z-index: 2;
 }
 
 .AR_Scanner{
@@ -79,6 +88,10 @@
   padding: 1rem;
 }
 
+.slider_item h1{
+  text-align: center;
+}
+
 .slider-item-title {
   font-size: 1.25rem;
   font-weight: bold;
@@ -103,3 +116,125 @@
   margin-bottom: 1rem;
 }
 
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  background-color: lightgrey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.popup-content {
+  border-radius: 8px;
+  max-width: 500px;  
+  width: calc(100% - 100px);
+  border: 2px solid skyblue;
+  border-radius: 8px;
+  background-color: white;
+  padding: 1rem;
+}
+.next-arrow-button,
+.prev-arrow-button{
+  border: none;
+  background: #101e26;
+  width: 40px;
+  height: 40vh;
+  position: fixed;
+  top: calc(50% - 20vh);
+  cursor: pointer;
+}
+.next-arrow-button{
+  right: 0;
+  clip-path: polygon(0% 10%, 100% 0%, 100% 100%, 0% 90%, 0% 100%);
+}
+.prev-arrow-button{
+  left: 0;
+  clip-path: polygon(0% 0%, 100% 10%, 100% 90%, 0% 100%, 0% 100%);
+}
+
+.next-arrow-button img,
+.prev-arrow-button img{
+  max-width: 30px;
+}
+
+.slider_item{
+  width: 100%;
+  margin: auto;
+}
+
+.slider_item li{
+  font-size: 20px;
+  line-height: 2;
+}
+
+.slider_item h2{
+  text-align: center;
+}
+
+.slider_item img{
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+}
+
+.close-btn {
+  position: absolute;
+  bottom: 5vh;
+  left: 32px;
+  background-color: #0a99ff;
+  border: none;
+  cursor: pointer;
+  font-size: 32px;
+  color: black;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+/* Additional styling for the slider can be added here */
+
+/* Footer.css */
+
+.footer-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #101e26;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer-button {
+  background-color: #0a99ff;
+  color: black;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 75px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.footer-button:hover {
+  background-color: lightblue;
+}
+
+.footer-button + .footer-button {
+  margin-left: 20px;
+}
