@@ -5,7 +5,9 @@ const Header = () => {
   return (
     <header className="header">
       <div className="container">
-        <Link to="/" className="logo">My App</Link>
+        <Link to="/" className="logo">
+        EIC AR
+        </Link>
       </div>
     </header>
   );
