@@ -1,0 +1,11 @@
+{
+  "allow_access": "Permitir acceso",
+  "instructions": "Instrucciones",
+  "help": "Ayuda",
+  "help_step_1": "Paso 1: Abrir la aplicación de realidad aumentada",
+  "help_step_2": "Paso 2: Escanear el marcador de realidad aumentada",
+  "help_step_3": "Paso 3: Explorar contenido de realidad aumentada",
+  "help_step_4": "Paso 4: Volver al modo de escaneo",
+  "help_step_5": "Paso 5: ¿Necesitas ayuda?",
+  "share": "Compartir"
+}
