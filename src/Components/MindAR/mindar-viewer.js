@@ -20,7 +20,7 @@ const ARScene = () => {
     return () => {
       arSystem.stop();
     }
-  }, []);
+  }, [navigate]);
 
   useEffect(() => {
     if (!data) return;
@@ -29,10 +29,10 @@ const ARScene = () => {
     imageTargets.forEach((target, index) => {
       target.addEventListener('targetFound', () => {
         console.log('targetIndex:', index);
-        navigate(`/marker/${index+1}`);
+        navigate(`/marker/${index + 1}`);
       });
     });
-  }, [data]);
+  }, [data, navigate]);
 
   const fetchData = async () => {
     try {
@@ -61,6 +61,7 @@ const ARScene = () => {
         <img
           id="card"
           src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.0/examples/image-tracking/assets/card-example/card.png"
+          alt="Card Example"
         />
         <a-asset-item
           id="avatarModel"

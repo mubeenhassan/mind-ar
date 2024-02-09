@@ -5,6 +5,8 @@
 }
 .control-buttons {
   position: relative;
+  padding-top: 164px;
+
 }
 
 ul, li{
@@ -17,11 +19,12 @@ ul, li{
 }
 
 .AR_Scanner{
-  margin: 20px auto;
+  margin: 38px auto;
   position: relative;
-  max-width: 500px;
+  max-width: 390px;
   width: 100%;
-  height: 500px;
+  z-index: 11111;
+  height: 390px;
   overflow: hidden;
 }
 
@@ -124,13 +127,21 @@ ul, li{
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-image: url(/public/images/guide-bg.jpg);
+  background-size: 148% 122%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
-
+.guide-container {
+  border: 2px solid skyblue;
+  border: 2px solid skyblue;
+  max-width: 400px;
+  margin: auto;
+}
 .popup-content {
   border-radius: 8px;
   max-width: 500px;  
   width: calc(100% - 100px);
-  border: 2px solid skyblue;
   border-radius: 8px;
   background-color: white;
   padding: 1rem;
@@ -175,13 +186,12 @@ ul, li{
 
 .slider_item img{
   width: 100%;
-  max-width: 400px;
   margin: auto;
 }
 
 .close-btn {
   position: absolute;
-  bottom: 5vh;
+  bottom: 12vh;
   left: 32px;
   background-color: black;
   border: none;
@@ -195,7 +205,31 @@ ul, li{
   justify-content: center;
   border-radius: 8px;
 }
-
+.lang-selector {
+  position: relative;
+}
+.lang-btn {
+  width: 200px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  margin-top: -150px;
+  left: -50%;
+  top: 50%;
+  transform: translate(-20%, 16%);
+}
+.select {
+  background: none;
+  border: none;
+  font-size: 16px;
+}
+.lang-btn button {
+  padding: 12px;
+  font-size: 17px;
+  color: white;
+  border: none;
+  background: #0a99ff;
+}
 .button {
   background-color: black;
   border: none;
@@ -210,8 +244,37 @@ ul, li{
   padding: 1rem 2rem;
   margin: auto;
 }
-
+.steps-guite  {
+  margin-top:16%;
+}
+.scanconainer {
+  border: solid rgba(13, 197, 59, 0.64);
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.scanline {
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  background: rgba(13, 197, 59, 0.64);
+  animation: move 5s linear infinite;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
 /* Additional styling for the slider can be added here */
+.app-scan-container {
+  background-image: url(/public/images/scan-bg.jpg);
+  background-size: 148% 122%;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
 
 /* Footer.css */
 
@@ -219,6 +282,7 @@ ul, li{
   position: fixed;
   bottom: 0;
   left: 0;
+  z-index: 111;
   width: 100%;
   background-color: #101e26;
   padding: 10px 0;

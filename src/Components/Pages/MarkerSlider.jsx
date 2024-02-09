@@ -35,41 +35,41 @@ const MarkerSlider = () => {
     <div className="marker-slider-container">
       <h1 className="marker-slider-title">Marker ID {targetId}</h1>
       <div className="marker-slider">
-      {targetData && (
-        <CustomSlider>
-          <div className="slider-item">
-            <h3 className="slider-item-title">Dashboard ID: {targetData.dashboard_id}</h3>
-            <p className="slider-item-description">{targetData.textDescription}</p>
-          </div>
-          <div className="slider-item">
-            <ul className="slider-url-list">
-              <h2 className="slider-item-title">List of URLs</h2>
-              {targetData.urlList.map((url, idx) => (
-                <li key={idx}>
-                  <a href={url}>{url}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="slider-item">
-            {targetData.imageUrl.includes('.mp4') ? (
-              <div className="slider-item">
-                <h2 className="slider-item-title">Video</h2>
-                <video controls className="slider-video">
-                  <source src={targetData.imageUrl} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-            ) : (
-              <div className="slider-item">
-                <h2 className="slider-item-title">Main Image</h2>
-                <img src={targetData.imageUrl} alt="marker" className="slider-image" />
-              </div>
-            )}
+        {targetData && (
+          <CustomSlider>
+            <div className="slider-item">
+              <h3 className="slider-item-title">Dashboard ID: {targetData.dashboard_id}</h3>
+              <p className="slider-item-description">{targetData.textDescription}</p>
             </div>
-        </CustomSlider>
-      )}
-          </div>
+            <div className="slider-item">
+              <ul className="slider-url-list">
+                <h2 className="slider-item-title">List of URLs</h2>
+                {targetData.urlList.map((url, idx) => (
+                  <li key={idx}>
+                    <a href={url}>{url}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="slider-item">
+              {targetData.imageUrl.includes('.mp4') ? (
+                <div className="slider-item">
+                  <h2 className="slider-item-title">Video</h2>
+                  <video controls className="slider-video">
+                    <source src={targetData.imageUrl} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              ) : (
+                <div className="slider-item">
+                  <h2 className="slider-item-title">Main Image</h2>
+                  <img src={targetData.imageUrl} alt="marker" className="slider-image" />
+                </div>
+              )}
+            </div>
+          </CustomSlider>
+        )}
+      </div>
 
     </div>
   );
