@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'; // Change navigate to useNavigate
 import CustomSlider from '../Elements/CustomSlider';
-const MarkerSlider = () => {
+const MarkerSlider = ({ t }) => {
   const { targetId } = useParams();
   const [targetData, setTargetData] = useState(null);
   const [loader, setLoader] = useState(true);
@@ -26,20 +26,29 @@ const MarkerSlider = () => {
     fetchData();
   }, [targetId, useNavigate]); // Change navigate to useNavigate
 
-
   if (loader) {
-    return <h1>Loading...</h1>;
+    return <h1>{t('loading')}...</h1>;
   }
 
   return (
     <div className="marker-slider-container">
-      <h1 className="marker-slider-title">Marker ID {targetId}</h1>
+      <img className="guide-top" src="/images/guide-top.png" alt="guide top" />
       <div className="marker-slider">
+        <div className='data-slider-bg' />
+        <div className='slider-item-title-container'>
+          <div className='profile-img'>
+            <img src="/images/12.png" alt="" />
+          </div>
+          <div className="slider-item-title-text">
+            <h2>Title</h2>
+            <p>Substitle</p>
+          </div>
+        </div>
+        <p className='slider-item-description'>{targetData.textDescription}</p>
         {targetData && (
           <CustomSlider>
-            <div className="slider-item">
+            <div className="slider-item ">
               <h3 className="slider-item-title">Dashboard ID: {targetData.dashboard_id}</h3>
-              <p className="slider-item-description">{targetData.textDescription}</p>
             </div>
             <div className="slider-item">
               <ul className="slider-url-list">
@@ -70,7 +79,6 @@ const MarkerSlider = () => {
           </CustomSlider>
         )}
       </div>
-
     </div>
   );
 };

@@ -28,7 +28,6 @@ const ARScene = () => {
     const imageTargets = sceneEl.querySelectorAll('[mindar-image-target]');
     imageTargets.forEach((target, index) => {
       target.addEventListener('targetFound', () => {
-        console.log('targetIndex:', index);
         navigate(`/marker/${index + 1}`);
       });
     });
