@@ -7,20 +7,23 @@ import Layout from "./Components/Layout";
 import { useTranslation } from 'react-i18next';
 
 const App = () => {
-  const { t } = useTranslation();
-
+  const { t, i18n } = useTranslation();
+  useEffect(() => {
+    const storedLanguage = sessionStorage.getItem('selectedLanguage');
+    if (storedLanguage) {
+      i18n.changeLanguage(storedLanguage);
+    }
+  }, [i18n]);
   return (
     <BrowserRouter>
-      <Layout>
+      <Layout t={t}>
         <Routes>
-          <Route index element={<HomePage t={t}/>} />
+          <Route index element={<HomePage t={t} />} />
           <Route path="/marker/:targetId" element={<MarkerSlider t={t} />} />
           {/* Add more routes here if needed */}
           {/* <Route path="*" element={<NoPage />} /> */}
         </Routes>
       </Layout>
-      {/* Show the popup if showPopup is true */}
-      
     </BrowserRouter>
   );
 };

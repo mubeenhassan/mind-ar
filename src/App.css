@@ -1,31 +1,33 @@
-
 /* src/styles.css */
-*{
+* {
   box-sizing: border-box;
 }
+
 .control-buttons {
   position: relative;
-  padding-top: 164px;
+  padding-top: 90px;
 
 }
 
-ul, li{
+ul,
+li {
   list-style: none;
   padding: 0px;
 }
 
 .App {
   text-align: center;
+  max-width: 500px;
+  margin: auto;
 }
 
-.AR_Scanner{
-  margin: 38px auto;
+.AR_Scanner {
   position: relative;
-  max-width: 390px;
   width: 100%;
-  z-index: 11111;
-  height: 390px;
+  max-height: 60%;
   overflow: hidden;
+  height: 100%;
+  margin-bottom: 0;
 }
 
 /* Custom CSS for Header component */
@@ -67,13 +69,92 @@ ul, li{
 .marker-slider-container {
   padding: 0rem 1rem;
   background: lightgray;
-  height: 75vh;
+  height: 100vh;
+  /* z-index: -1; */
+  position: relative;
+  max-width: 500px;
 }
 
 .marker-slider-title {
   font-size: 1.5rem;
   font-weight: bold;
   margin: 0rem;
+}
+
+.data-slider-bg {
+  background: gray;
+  border-radius: 40px;
+  width: 92%;
+  height: 76%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.slider-item-description {
+  position: absolute;
+  bottom: 24%;
+  text-align: left;
+  left: 50%;
+  color: white;
+  transform: translate(-50%, 50%);
+  font-size: 16px;
+  width: 86%;
+  border: 1px solid #0a99ff;
+  outline: 1px solid #0a99ff;
+  outline-offset: -7px; 
+   padding: 10px;
+}
+
+.slider-item-title-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 18%;
+  overflow: hidden;
+  left: 10%;
+}
+.slick-slider .slick-track, 
+.slick-slider .slick-list {
+  transform: translate3d(0, 100%, 0);
+  
+}
+.slick-list {
+  background: white;
+  max-height: 30vh;
+  min-height: 30vh;
+}
+.profile-img {
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.profile-img img {
+  width: 100%;
+}
+
+.slider-item-title-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding-left: 20px;
+}
+
+.slider-item-title-container h2 {
+  margin: 0;
+  color: white;
+}
+
+.slider-item-title-container p {
+  margin: 0;
+  color: #3d87ff;
+  font-size: 20px;
+  font-weight: bolder;
+
 }
 
 .marker-slider {
@@ -87,17 +168,13 @@ ul, li{
   margin: auto;
 }
 
-.slider_item h1{
+.slider_item h1 {
   text-align: center;
 }
 
 .slider-item-title {
   font-size: 1.25rem;
   font-weight: bold;
-}
-
-.slider-item-description {
-  margin-bottom: 1rem;
 }
 
 .slider-video {
@@ -118,7 +195,8 @@ ul, li{
 .popup-overlay {
   position: fixed;
   top: 0;
-  left: 0;
+  max-width: 500px;
+  margin: auto;
   width: 100%;
   height: 100%;
   z-index: 3;
@@ -126,65 +204,76 @@ ul, li{
   display: flex;
   justify-content: center;
   align-items: center;
+
   flex-direction: column;
-  background-image: url(/public/images/guide-bg.jpg);
-  background-size: 148% 122%;
-  background-position: center;
-  background-repeat: no-repeat;
 }
+
 .guide-container {
   border: 2px solid skyblue;
   border: 2px solid skyblue;
   max-width: 400px;
   margin: auto;
 }
+
+.guide-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 500px;
+  max-height: 70px;
+  width: 100%;
+}
+
 .popup-content {
   border-radius: 8px;
-  max-width: 500px;  
+  max-width: 500px;
   width: calc(100% - 100px);
   border-radius: 8px;
   background-color: white;
   padding: 1rem;
 }
+
 .next-arrow-button,
-.prev-arrow-button{
+.prev-arrow-button {
   border: none;
   background: #101e26;
   width: 40px;
-  height: 40vh;
+  height: 30vh;
   position: fixed;
   top: calc(50% - 20vh);
   cursor: pointer;
 }
-.next-arrow-button{
+
+.next-arrow-button {
   right: 0;
   clip-path: polygon(0% 10%, 100% 0%, 100% 100%, 0% 90%, 0% 100%);
 }
-.prev-arrow-button{
+
+.prev-arrow-button {
   left: 0;
   clip-path: polygon(0% 0%, 100% 10%, 100% 90%, 0% 100%, 0% 100%);
 }
 
 .next-arrow-button img,
-.prev-arrow-button img{
+.prev-arrow-button img {
   max-width: 30px;
 }
 
-.slider_item{
+.slider_item {
   width: 100%;
   margin: auto;
 }
 
-.slider_item li{
+.slider_item li {
   font-size: 20px;
   line-height: 2;
 }
 
-.slider_item h2{
+.slider_item h2 {
   text-align: center;
 }
 
-.slider_item img{
+.slider_item img {
   width: 100%;
   margin: auto;
 }
@@ -205,24 +294,56 @@ ul, li{
   justify-content: center;
   border-radius: 8px;
 }
-.lang-selector {
+
+.lang-selector,
+.lang-selector button {
   position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  cursor: pointer;
 }
+
+.a-enter-vr-button {
+  display: none;
+}
+
 .lang-btn {
   width: 200px;
   position: absolute;
   display: flex;
   flex-direction: column;
   margin-top: -150px;
-  left: -50%;
+  left: 0;
   top: 50%;
   transform: translate(-20%, 16%);
 }
+
+.Demo__some-network {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  opacity: 0;
+  width: 100%;
+  justify-content: space-evenly;
+  max-width: 500px;
+  transition: 0.5s;
+
+}
+
+.showpopup {
+  bottom: 10%;
+  opacity: 1;
+  z-index: 1;
+  transition: 0.5s;
+}
+
 .select {
   background: none;
   border: none;
   font-size: 16px;
 }
+
 .lang-btn button {
   padding: 12px;
   font-size: 17px;
@@ -230,6 +351,7 @@ ul, li{
   border: none;
   background: #0a99ff;
 }
+
 .button {
   background-color: black;
   border: none;
@@ -244,19 +366,28 @@ ul, li{
   padding: 1rem 2rem;
   margin: auto;
 }
-.steps-guite  {
-  margin-top:16%;
+
+.steps-guite ul {
+  padding: 8px;
 }
+
+.steps-guite ul li {
+  font-size: 16px;
+  text-align: left;
+}
+
 .scanconainer {
-  border: solid rgba(13, 197, 59, 0.64);
-  width: 100%;
-  height: 100%;
+  width: 91%;
+  height: 80%;
   background: transparent;
   position: absolute;
   left: 50%;
+  z-index: -1;
+  margin-top: 12%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
 .scanline {
   position: absolute;
   width: 100%;
@@ -267,13 +398,19 @@ ul, li{
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
 /* Additional styling for the slider can be added here */
 .app-scan-container {
-  background-image: url(/public/images/scan-bg.jpg);
-  background-size: 148% 122%;
-  background-position: center;
-  background-repeat: no-repeat;
   height: 100vh;
+  position: relative;
+}
+
+.scancamera-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
 }
 
 /* Footer.css */
@@ -281,12 +418,12 @@ ul, li{
 .footer-container {
   position: fixed;
   bottom: 0;
-  left: 0;
   z-index: 111;
   width: 100%;
   background-color: #101e26;
   padding: 10px 0;
   display: flex;
+  max-width: 500px;
   justify-content: space-around;
 }
 
@@ -295,7 +432,6 @@ ul, li{
   color: black;
   border: none;
   border-radius: 50%;
-  padding: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   width: 75px;
@@ -310,6 +446,6 @@ ul, li{
   background-color: lightblue;
 }
 
-.footer-button + .footer-button {
+.footer-button+.footer-button {
   margin-left: 20px;
 }

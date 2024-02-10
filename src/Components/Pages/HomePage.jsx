@@ -13,17 +13,19 @@ const HomePage = ({ t }) => {
 
   return (
     <div className="app-scan-container">
+      <img className="scancamera-bg" src="/images/scan-bg.png" alt="" />
       <div className="control-buttons">
-        {started === null && <button className="button" onClick={() => { setStarted('aframe') }}>Start Scanning</button>}
-        {started !== null && <button className="button" onClick={() => { setStarted(null) }}>Stop</button>}
+        {started === null && <button className="button" onClick={() => { setStarted('aframe') }}>
+          {t('start_scanning')}</button>}
+        {started !== null && <button className="button" onClick={() => { setStarted(null) }}>
+          {t('stop')}</button>}
       </div>
       {started === 'aframe' && (
         <div className="AR_Scanner">
           <MindARViewer />
-          {/* <video></video> */}
           <div className="scanconainer">
-          <div className="scanline" />
-          </div>
+            <div className="scanline" />
+          </div>start_scanning
         </div>
       )}
       {showPopup && <GuidePopup onClose={handleClosePopup} t={t} />}

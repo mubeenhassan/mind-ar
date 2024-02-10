@@ -26,7 +26,6 @@ const CustomSlider = ({ children }) => {
     slidesToScroll: 1,
     prevArrow: <CustomPrevButton />,
     nextArrow: <CustomNextButton />,
-    afterChange: (currentSlide) => console.log(currentSlide),
   };
 
   return (

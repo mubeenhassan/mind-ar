@@ -1,10 +1,8 @@
 import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import { useTranslation } from 'react-i18next';
 
-const Layout = ({ children }) => {
-  const { t } = useTranslation();
+const Layout = ({ children, t }) => {
   return (
     <div className="App">
       {/* <Header t={t} /> */}

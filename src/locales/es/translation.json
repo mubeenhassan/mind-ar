@@ -2,10 +2,17 @@
   "allow_access": "Permitir acceso",
   "instructions": "Instrucciones",
   "help": "Ayuda",
-  "help_step_1": "Paso 1: Abrir la aplicación de realidad aumentada",
-  "help_step_2": "Paso 2: Escanear el marcador de realidad aumentada",
-  "help_step_3": "Paso 3: Explorar contenido de realidad aumentada",
-  "help_step_4": "Paso 4: Volver al modo de escaneo",
+  "ready_tap_the_x": "¿Listo? ¡Toca la X para empezar a escanear!",
+  "save_your_collection": "Guardar tu colección",
+  "scan_ar_marker": "Escanear marcador AR",
+  "scan_more_marker": "Escanear más marcadores",
+  "help_step_1": "Paso 1: Abre la aplicación AR",
+  "help_step_2": "Paso 2: Escanea el marcador AR",
+  "help_step_3": "Paso 3: Explora el contenido AR",
+  "help_step_4": "Paso 4: Vuelve al modo de escaneo",
   "help_step_5": "Paso 5: ¿Necesitas ayuda?",
-  "share": "Compartir"
+  "loading": "Cargando",
+  "share": "Compartir",
+  "start_scanning": "Comenzar a escanear",
+  "stop": "Detener"
 }
