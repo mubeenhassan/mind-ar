@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import GuidePopup from "../Elements/GuidePopup";
 import MindARViewer from "../MindAR/mindar-viewer";
 
@@ -6,9 +6,17 @@ const HomePage = ({ t }) => {
   const [started, setStarted] = useState(null);
   const [showPopup, setShowPopup] = useState(true);
 
+  useEffect(() => {
+    // Check if the preference is stored in the browser cache
+    const isFirstVisit = localStorage.getItem('showGuidePopup') !== 'false';
+    setShowPopup(isFirstVisit); // Show the popup only on the first visit
+  }, []);
+
   const handleClosePopup = () => {
     setStarted('aframe')
     setShowPopup(false)
+    localStorage.setItem('showGuidePopup', 'false');
+
   }
 
   return (

@@ -103,8 +103,8 @@ li {
   width: 86%;
   border: 1px solid #0a99ff;
   outline: 1px solid #0a99ff;
-  outline-offset: -7px; 
-   padding: 10px;
+  outline-offset: -7px;
+  padding: 10px;
 }
 
 .slider-item-title-container {
@@ -116,16 +116,24 @@ li {
   overflow: hidden;
   left: 10%;
 }
-.slick-slider .slick-track, 
+
+.popup-content .slick-slider .slick-track,
+.popup-content .slick-slider .slick-list {
+  transform: translate3d(0, 0, 0);
+
+}
+.slick-slider .slick-track,
 .slick-slider .slick-list {
   transform: translate3d(0, 100%, 0);
-  
+
 }
+
 .slick-list {
   background: white;
   max-height: 30vh;
   min-height: 30vh;
 }
+
 .profile-img {
   width: 60px;
   height: 60px;

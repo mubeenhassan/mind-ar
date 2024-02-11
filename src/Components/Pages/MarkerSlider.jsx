@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'; // Change navigate to useNavigate
 import CustomSlider from '../Elements/CustomSlider';
+
 const MarkerSlider = ({ t }) => {
+  const navigate = useNavigate();
+
   const { targetId } = useParams();
   const [targetData, setTargetData] = useState(null);
   const [loader, setLoader] = useState(true);
@@ -25,7 +28,9 @@ const MarkerSlider = ({ t }) => {
 
     fetchData();
   }, [targetId, useNavigate]); // Change navigate to useNavigate
-
+  const onClose = () => {
+    navigate(`/`);
+  }
   if (loader) {
     return <h1>{t('loading')}...</h1>;
   }
@@ -45,6 +50,9 @@ const MarkerSlider = ({ t }) => {
           </div>
         </div>
         <p className='slider-item-description'>{targetData.textDescription}</p>
+        <button className="close-btn" onClick={onClose}>
+          &times;
+        </button>
         {targetData && (
           <CustomSlider>
             <div className="slider-item ">
