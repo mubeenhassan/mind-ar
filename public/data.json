@@ -5,7 +5,6 @@
         "videoUrl": "https://svs.gsfc.nasa.gov/vis/a000000/a004900/a004975/GISTEMP_Spiral_2022-03-06_1851_1080sq.mp4",
         "textDescription": "The visualization presents monthly global temperature anomalies between the years 1880-2021. These temperatures are based on the GISS Surface Temperature Analysis (GISTEMP v4), an estimate of global surface temperature change. Anomalies are defined relative to a base period of 1951-1980.",
         "urlList": [
-            "https://svs.gsfc.nasa.gov/vis/a000000/a004900/a004975/",
             "https://go.nasa.gov/eic"
         ],
         "additionalText": "An animated view of NASA's Earth observing fleet, as it looks today. This 30 second visualization is updated once per day. Time shown in UTC. This version is a square aspect ratio (2160x2160) with no star background.",

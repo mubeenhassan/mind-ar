@@ -68,7 +68,7 @@ li {
 
 .marker-slider-container {
   padding: 0rem 1rem;
-  background: lightgray;
+  background: #86888A;
   height: 100vh;
   /* z-index: -1; */
   position: relative;
@@ -80,41 +80,32 @@ li {
   font-weight: bold;
   margin: 0rem;
 }
-
-.data-slider-bg {
-  background: gray;
-  border-radius: 40px;
-  width: 92%;
-  height: 76%;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .slider-item-description {
-  position: absolute;
-  bottom: 24%;
   text-align: left;
-  left: 50%;
-  color: white;
-  transform: translate(-50%, 50%);
   font-size: 16px;
   width: 86%;
-  border: 1px solid #0a99ff;
-  outline: 1px solid #0a99ff;
+  color: white;
   outline-offset: -7px;
   padding: 10px;
 }
-
+.star-icon {
+  width: 34px;
+  height: 34px;
+}
+.star-icon img {
+  width: 100%;
+}
 .slider-item-title-container {
-  position: absolute;
   display: flex;
   align-items: center;
-  justify-content: center;
-  top: 18%;
+  justify-content: space-between;
   overflow: hidden;
-  left: 10%;
+  margin-bottom: 24px;
+}
+.slider-btn-header {
+  display: flex;
+  justify-content: left;
+  align-items: center;
 }
 
 .popup-content .slick-slider .slick-track,
@@ -122,17 +113,7 @@ li {
   transform: translate3d(0, 0, 0);
 
 }
-.slick-slider .slick-track,
-.slick-slider .slick-list {
-  transform: translate3d(0, 100%, 0);
 
-}
-
-.slick-list {
-  background: white;
-  max-height: 30vh;
-  min-height: 30vh;
-}
 
 .profile-img {
   width: 60px;
@@ -166,14 +147,21 @@ li {
 }
 
 .marker-slider {
-  max-width: 90%;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0rem 2rem
+  padding: 0rem;
+  height:70vh;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 20%);
 }
 
 .slider-item {
-  padding: 1rem;
+  padding: 1.5rem;
   margin: auto;
+  margin-top: 24px;
+
 }
 
 .slider_item h1 {
@@ -243,13 +231,17 @@ li {
 
 .next-arrow-button,
 .prev-arrow-button {
-  border: none;
   background: #101e26;
-  width: 40px;
+  width: 20px;
   height: 30vh;
+  padding: 4px;
+  z-index: 11;
   position: fixed;
   top: calc(50% - 20vh);
   cursor: pointer;
+  margin: 0;
+  outline: none;
+  border: none;
 }
 
 .next-arrow-button {
@@ -264,7 +256,7 @@ li {
 
 .next-arrow-button img,
 .prev-arrow-button img {
-  max-width: 30px;
+  max-width: 10px;
 }
 
 .slider_item {
@@ -285,11 +277,14 @@ li {
   width: 100%;
   margin: auto;
 }
+.popup-overlay .close-btn {
+  bottom: 12vh;
+}
 
 .close-btn {
   position: absolute;
-  bottom: 12vh;
-  left: 32px;
+    left: 10px;
+    bottom: -20px;
   background-color: black;
   border: none;
   cursor: pointer;
@@ -303,6 +298,10 @@ li {
   border-radius: 8px;
 }
 
+.slider-main-center-container img{
+  width: 100%;
+  max-height: 300px;
+}
 .lang-selector,
 .lang-selector button {
   position: relative;
@@ -310,6 +309,7 @@ li {
   height: 100%;
   text-align: center;
   cursor: pointer;
+  padding: 0;
 }
 
 .a-enter-vr-button {
@@ -329,20 +329,23 @@ li {
 
 .Demo__some-network {
   position: absolute;
-  bottom: 0;
   display: flex;
+  flex-direction: column;
+  align-items: end;
+  right: 4%;
   opacity: 0;
   width: 100%;
   justify-content: space-evenly;
   max-width: 500px;
   transition: 0.5s;
-
+  transform: translateY(61%);
+  bottom: 0;
 }
 
 .showpopup {
-  bottom: 10%;
   opacity: 1;
   z-index: 1;
+  transform: translateY(-60%);
   transition: 0.5s;
 }
 
@@ -422,37 +425,48 @@ li {
 }
 
 /* Footer.css */
-
+.main-footer {
+  position: relative;
+  overflow: hidden;
+}
 .footer-container {
   position: fixed;
   bottom: 0;
   z-index: 111;
   width: 100%;
-  background-color: #101e26;
-  padding: 10px 0;
+  padding: 14px 0;
   display: flex;
   max-width: 500px;
   justify-content: space-around;
+  padding-top: 30px;
 }
-
+.clip-path-footer {
+  width: 100%;
+  position: absolute;
+  background: #101e26;
+  height: 100%;
+  clip-path: polygon(21% 15%, 26% 0, 100% 0, 100% 100%, 0 100%, 0 15%);
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
 .footer-button {
-  background-color: #0a99ff;
   color: black;
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  width: 75px;
-  height: 75px;
+  width: 60px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 16px;
 }
-
-.footer-button:hover {
-  background-color: lightblue;
+.footer-button img {
+  width: 100%;
+  height: 100%;
 }
+
 
 .footer-button+.footer-button {
   margin-left: 20px;

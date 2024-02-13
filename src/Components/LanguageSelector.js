@@ -13,7 +13,7 @@ function LanguageSelector() {
   return (
     <div className='lang-selector'>
       <button className='select' onClick={() => setShowDropdown(!showDropdown)}>
-        {i18n.language === 'en' ? 'English' : 'Spanish'}
+        <img src='/images/icon/language.svg' alt='language' />
       </button>
       {showDropdown && (
         <div className='lang-btn'>
