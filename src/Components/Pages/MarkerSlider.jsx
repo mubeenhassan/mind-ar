@@ -65,8 +65,6 @@ const MarkerSlider = ({ t }) => {
     <div className="marker-slider-container">
       <img className="guide-top" src="/images/guide-top.png" alt="guide top" />
       <div className="marker-slider">
-
-       
         {targetData && (
           <CustomSlider>
             <div className="slider-item ">
@@ -133,9 +131,9 @@ const MarkerSlider = ({ t }) => {
               <div className='slider-main-center-container'>
                 <img src="/images/mockupslider.png" alt="" />
               </div>
-              <p className='slider-item-description'>The star icon on each slide will save an icon of that element to the top collection container.</p>
+              <p className='slider-item-description'>{targetData.textDescription}</p>
             </div>
-        
+
             <div className="slider-item">
               {targetData.imageUrl.includes('.mp4') ? (
                 <div className="slider-item">
@@ -154,7 +152,7 @@ const MarkerSlider = ({ t }) => {
             </div>
           </CustomSlider>
         )}
-         <button className="close-btn" onClick={onClose}>
+        <button className="close-btn" onClick={onClose}>
           &times;
         </button>
       </div>

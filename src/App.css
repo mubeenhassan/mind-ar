@@ -331,7 +331,7 @@ li {
   position: absolute;
   display: flex;
   flex-direction: column;
-  align-items: end;
+  align-items:flex-end;
   right: 4%;
   opacity: 0;
   width: 100%;
