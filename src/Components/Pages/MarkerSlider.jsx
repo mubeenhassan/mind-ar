@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'; // Change navigate to useNavigate
 import CustomSlider from '../Elements/CustomSlider';
+import FavIcon from '../Elements/FavIcon';
 
 const MarkerSlider = ({ t }) => {
   const navigate = useNavigate();
@@ -8,7 +9,6 @@ const MarkerSlider = ({ t }) => {
   const { targetId } = useParams();
   const [targetData, setTargetData] = useState(null);
   const [loader, setLoader] = useState(true);
-  const [isFav, setIsFav] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,24 +31,30 @@ const MarkerSlider = ({ t }) => {
 
     fetchData();
   }, [targetId, useNavigate]); // Change navigate to useNavigate
-  
-  useEffect(() => {
-    if ((JSON.parse(localStorage.getItem('savedDataNew')) ?? []).includes(targetId)) {
-      setIsFav(true)
-    } 
-  }, []);
 
-  const toggleSave = () => {
+  const toggleSave = (index) => {
     let existingFav = JSON.parse(localStorage.getItem('savedDataNew')) ?? [];
-    if (existingFav.includes(targetId)) {
-      existingFav = existingFav.filter(id => id !== targetId);
-      setIsFav(false)
+    const existingIndex = existingFav.findIndex(item => item.markerID === targetId);
+    
+    if (existingIndex !== -1) {
+        if (existingFav[existingIndex].slideIDs.includes(index)) {
+            existingFav[existingIndex].slideIDs = existingFav[existingIndex].slideIDs.filter(id => id !== index);
+            if (existingFav[existingIndex].slideIDs.length === 0) {
+                existingFav.splice(existingIndex, 1);
+            }
+        } else {
+            existingFav[existingIndex].slideIDs.push(index);
+        }
     } else {
-      setIsFav(true)
-      existingFav.push(targetId)
+        existingFav.push({
+            markerID: targetId,
+            slideIDs: [index]
+        });
     }
-    localStorage.setItem('savedDataNew', JSON.stringify([...existingFav]))
-  };
+    
+    localStorage.setItem('savedDataNew', JSON.stringify(existingFav));
+};
+
 
   const onClose = () => {
     navigate(`/`);
@@ -77,11 +83,7 @@ const MarkerSlider = ({ t }) => {
                         <p>{item.subtitle}</p>
                       </div>
                     </div>
-                    <div className='star-icon' onClick={toggleSave}>
-                      {isFav
-                        ? <img src='/images/icon/star.svg' />
-                        : <img src='/images/icon/star_inactive.svg' />}
-                    </div>
+                      <FavIcon id={index} targetId={targetId} toggleSave={toggleSave} />
                   </div>
                   <div className='slider-main-center-container'>
                     <video controls className="slider-video">
