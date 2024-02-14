@@ -8,7 +8,7 @@ const MarkerSlider = ({ t }) => {
   const { targetId } = useParams();
   const [targetData, setTargetData] = useState(null);
   const [loader, setLoader] = useState(true);
-  const [savedData, setSavedData] = useState(null);
+  const [isFav, setIsFav] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,7 +20,6 @@ const MarkerSlider = ({ t }) => {
         const data = await response.json();
         data.slides.map((item, index) => {
           if (item.markerID === targetId) {
-            // console.log(item.slides)
             setLoader(false);
             setTargetData(item.slides);
           }
@@ -32,40 +31,31 @@ const MarkerSlider = ({ t }) => {
 
     fetchData();
   }, [targetId, useNavigate]); // Change navigate to useNavigate
+  
   useEffect(() => {
-    // Load saved data from local storage on component mount
-    const savedDataJSON = localStorage.getItem('savedDataNew');
-    if (savedDataJSON) {
-      setSavedData(JSON.parse(savedDataJSON));
-    }
+    if ((JSON.parse(localStorage.getItem('savedDataNew')) ?? []).includes(targetId)) {
+      setIsFav(true)
+    } 
   }, []);
 
-  const toggleSave = (dashboardId) => {
-    // if (!savedData) {
-    //   const initialSavedData = {};
-    //   initialSavedData[dashboardId] = true;
-    //   setSavedData(initialSavedData);
-    //   localStorage.setItem('savedDataNew', JSON.stringify(initialSavedData));
-    // } else {
-    //   const updatedSavedData = { ...savedData };
-    //   if (updatedSavedData[dashboardId]) {
-    //     delete updatedSavedData[dashboardId];
-    //   } else {
-    //     updatedSavedData[dashboardId] = true;
-    //   }
-    //   setSavedData(updatedSavedData);
-    //   localStorage.setItem('savedDataNew', JSON.stringify(updatedSavedData));
-    // }
+  const toggleSave = () => {
+    let existingFav = JSON.parse(localStorage.getItem('savedDataNew')) ?? [];
+    if (existingFav.includes(targetId)) {
+      existingFav = existingFav.filter(id => id !== targetId);
+      setIsFav(false)
+    } else {
+      setIsFav(true)
+      existingFav.push(targetId)
+    }
+    localStorage.setItem('savedDataNew', JSON.stringify([...existingFav]))
   };
 
-  console.log(savedData)
   const onClose = () => {
     navigate(`/`);
   }
   if (loader) {
     return <h1>{t('loading')}...</h1>;
   }
-
   return (
     <div className="marker-slider-container">
       <img className="guide-top" src="/images/guide-top.png" alt="guide top" />
@@ -87,8 +77,8 @@ const MarkerSlider = ({ t }) => {
                         <p>{item.subtitle}</p>
                       </div>
                     </div>
-                    <div className='star-icon' onClick={toggleSave(item)}>
-                      {savedData && savedData[targetData.dashboard_id]
+                    <div className='star-icon' onClick={toggleSave}>
+                      {isFav
                         ? <img src='/images/icon/star.svg' />
                         : <img src='/images/icon/star_inactive.svg' />}
                     </div>
