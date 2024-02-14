@@ -18,10 +18,13 @@ const MarkerSlider = ({ t }) => {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
-        // Find the object with the specified dashboard_id
-        const targetItem = data.find(item => item.dashboard_id === Number(targetId));
-        setLoader(false);
-        setTargetData(targetItem);
+        data.slides.map((item, index) => {
+          if (item.markerID === targetId) {
+            // console.log(item.slides)
+            setLoader(false);
+            setTargetData(item.slides);
+          }
+        })
       } catch (error) {
         console.error('Error fetching data:', error.message);
       }
@@ -29,30 +32,32 @@ const MarkerSlider = ({ t }) => {
 
     fetchData();
   }, [targetId, useNavigate]); // Change navigate to useNavigate
-
   useEffect(() => {
     // Load saved data from local storage on component mount
-    const savedDataJSON = localStorage.getItem('savedData');
+    const savedDataJSON = localStorage.getItem('savedDataNew');
     if (savedDataJSON) {
       setSavedData(JSON.parse(savedDataJSON));
     }
   }, []);
 
-  const toggleSave = () => {
-    if (savedData && savedData[targetData.dashboard_id]) {
-      const updatedSavedData = { ...savedData };
-      delete updatedSavedData[targetData.dashboard_id];
-      localStorage.setItem('savedData', JSON.stringify(updatedSavedData));
-      setSavedData(updatedSavedData);
-    } else {
-      const updatedSavedData = {
-        ...savedData,
-        [targetData.dashboard_id]: targetData,
-      };
-      localStorage.setItem('savedData', JSON.stringify(updatedSavedData));
-      setSavedData(updatedSavedData);
-    }
+  const toggleSave = (dashboardId) => {
+    // if (!savedData) {
+    //   const initialSavedData = {};
+    //   initialSavedData[dashboardId] = true;
+    //   setSavedData(initialSavedData);
+    //   localStorage.setItem('savedDataNew', JSON.stringify(initialSavedData));
+    // } else {
+    //   const updatedSavedData = { ...savedData };
+    //   if (updatedSavedData[dashboardId]) {
+    //     delete updatedSavedData[dashboardId];
+    //   } else {
+    //     updatedSavedData[dashboardId] = true;
+    //   }
+    //   setSavedData(updatedSavedData);
+    //   localStorage.setItem('savedDataNew', JSON.stringify(updatedSavedData));
+    // }
   };
+
   console.log(savedData)
   const onClose = () => {
     navigate(`/`);
@@ -65,31 +70,44 @@ const MarkerSlider = ({ t }) => {
     <div className="marker-slider-container">
       <img className="guide-top" src="/images/guide-top.png" alt="guide top" />
       <div className="marker-slider">
+
         {targetData && (
           <CustomSlider>
-            <div className="slider-item ">
-              <div className='slider-item-title-container'>
-                <div className='slider-btn-header' >
-                  <div className='profile-img'>
-                    <img src="/images/12.png" alt="" />
+            {
+              targetData.map((item, index) => (
+                <div key={index} className="slider-item ">
+                  {/* {console.log(item)} */}
+                  <div className='slider-item-title-container'>
+                    <div className='slider-btn-header' >
+                      <div className='profile-img'>
+                        <img src="/images/12.png" alt="" />
+                      </div>
+                      <div className="slider-item-title-text">
+                        <h2>{item.title}</h2>
+                        <p>{item.subtitle}</p>
+                      </div>
+                    </div>
+                    <div className='star-icon' onClick={toggleSave(item)}>
+                      {savedData && savedData[targetData.dashboard_id]
+                        ? <img src='/images/icon/star.svg' />
+                        : <img src='/images/icon/star_inactive.svg' />}
+                    </div>
                   </div>
-                  <div className="slider-item-title-text">
-                    <h2>Title1</h2>
-                    <p>Substitle1</p>
+                  <div className='slider-main-center-container'>
+                    <video controls className="slider-video">
+                    <source src={item.mediaURL} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                    {/* <img src='https://worldview.earthdata.nasa.gov/?v=-180,-87.5,180,92.5&df=true&kiosk=true&eic=si&l=IMERG_Precipitation_Rate,Land_Mask&lg=false&t=2023-10-30-T16%3A00%3A00Z' /> */}
+                    {/* <iframe src="https://worldview.earthdata.nasa.gov/?v=-180,-87.5,180,92.5&df=true&kiosk=true&eic=si&l=IMERG_Precipitation_Rate,Land_Mask&lg=false&t=2023-10-30-T16%3A00%3A00Z" role="application" sandbox="allow-modals allow-scripts allow-same-origin allow-forms allow-popups" width="100%" height="100%" allow="fullscreen; autoplay;" loading="lazy"></iframe> */}
+
                   </div>
+                  <p className='slider-item-description'>{item.description}</p>
                 </div>
-                <div className='star-icon' onClick={toggleSave}>
-                  {savedData && savedData[targetData.dashboard_id]
-                    ? <img src='/images/icon/star.svg' />
-                    : <img src='/images/icon/star_inactive.svg' />}
-                </div>
-              </div>
-              <div className='slider-main-center-container'>
-                <img src="/images/mockupslider.png" alt="" />
-              </div>
-              <p className='slider-item-description'>{targetData.textDescription}</p>
-            </div>
-            <div className="slider-item ">
+              ))
+            }
+
+            {/* <div className="slider-item ">
               <div className='slider-item-title-container'>
                 <div className='slider-btn-header' >
                   <div className='profile-img'>
@@ -110,8 +128,8 @@ const MarkerSlider = ({ t }) => {
                 <img src="/images/mockupslider.png" alt="" />
               </div>
               <p className='slider-item-description'>{targetData.textDescription}</p>
-            </div>
-            <div className="slider-item ">
+            </div> */}
+            {/* <div className="slider-item ">
               <div className='slider-item-title-container'>
                 <div className='slider-btn-header' >
                   <div className='profile-img'>
@@ -132,9 +150,9 @@ const MarkerSlider = ({ t }) => {
                 <img src="/images/mockupslider.png" alt="" />
               </div>
               <p className='slider-item-description'>{targetData.textDescription}</p>
-            </div>
+            </div> */}
 
-            <div className="slider-item">
+            {/* <div className="slider-item">
               {targetData.imageUrl.includes('.mp4') ? (
                 <div className="slider-item">
                   <h2 className="slider-item-title">Video</h2>
@@ -149,7 +167,7 @@ const MarkerSlider = ({ t }) => {
                   <img src={targetData.imageUrl} alt="marker" className="slider-image" />
                 </div>
               )}
-            </div>
+            </div> */}
           </CustomSlider>
         )}
         <button className="close-btn" onClick={onClose}>

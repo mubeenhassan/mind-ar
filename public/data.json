@@ -1,65 +1,134 @@
-[
-    {
-        "dashboard_id": 1,
-        "marker_id": "00",
-        "videoUrl": "https://svs.gsfc.nasa.gov/vis/a000000/a004900/a004975/GISTEMP_Spiral_2022-03-06_1851_1080sq.mp4",
-        "textDescription": "The visualization presents monthly global temperature anomalies between the years 1880-2021. These temperatures are based on the GISS Surface Temperature Analysis (GISTEMP v4), an estimate of global surface temperature change. Anomalies are defined relative to a base period of 1951-1980.",
-        "urlList": [
-            "https://go.nasa.gov/eic"
-        ],
-        "additionalText": "An animated view of NASA's Earth observing fleet, as it looks today. This 30 second visualization is updated once per day. Time shown in UTC. This version is a square aspect ratio (2160x2160) with no star background.",
-        "imageUrl": "https://svs.gsfc.nasa.gov/vis/a000000/a005000/a005067/fleet_today_30sec_nostars_sq.mp4"
-    },
-    {
-        "dashboard_id": 2,
-        "marker_id": "01",
-        "videoUrl": "https://svs.gsfc.nasa.gov/vis/a000000/a005000/a005067/fleet_today_30sec_nostars_sq.mp4",
-        "textDescription": "Educational content about space exploration.",
-        "urlList": [
-            "https://example.com/resource1",
-            "https://example.com/resource2",
-            "https://example.com/resource3"
-        ],
-        "additionalText": "Featuring an interview with an astronaut.",
-        "imageUrl": "https://example.com/images/image2.jpg"
-    },
-    {
-        "dashboard_id": 3,
-        "marker_id": "02",
-        "videoUrl": "https://svs.gsfc.nasa.gov/vis/a000000/a005000/a005067/fleet_today_30sec_nostars_sq.mp4",
-        "textDescription": "A documentary on marine life.",
-        "urlList": [
-            "https://example.com/marine1",
-            "https://example.com/marine2",
-            "https://example.com/marine3"
-        ],
-        "additionalText": "Exploring the depths of the ocean.",
-        "imageUrl": "https://example.com/images/image3.jpg"
-    },
-    {
-        "dashboard_id": 4,
-        "marker_id": "03",
-        "videoUrl": "https://svs.gsfc.nasa.gov/vis/a000000/a005000/a005067/fleet_today_30sec_nostars_sq.mp4",
-        "textDescription": "Tutorial on advanced baking techniques.",
-        "urlList": [
-            "https://example.com/baking1",
-            "https://example.com/baking2",
-            "https://example.com/baking3"
-        ],
-        "additionalText": "Learn to bake like a pro.",
-        "imageUrl": "https://example.com/images/image4.jpg"
-    },
-    {
-        "dashboard_id": 5,
-        "marker_id": "04",
-        "videoUrl": "https://svs.gsfc.nasa.gov/vis/a000000/a005000/a005067/fleet_today_30sec_nostars_sq.mp4",
-        "textDescription": "A short film about friendship and resilience.",
-        "urlList": [
-            "https://example.com/film1",
-            "https://example.com/film2",
-            "https://example.com/film3"
-        ],
-        "additionalText": "Award-winning short film from an independent filmmaker.",
-        "imageUrl": "https://example.com/images/image5.jpg"
-    }
-]
+{
+    "slides": [
+        {
+            "markerID": "1",
+            "slides": [
+                {
+                    "slideNumber": "D001_01",
+                    "title": "Satellites",
+                    "subtitle": "Earth Observing Fleet",
+                    "description": "We can see the current satellites observing earth that gather data from the plane",
+                    "mediaURL": "https://svs.gsfc.nasa.gov/vis/a000000/a005000/a005067/fleet_today_30sec_nostars.mp4"
+                },
+                {
+                    "slideNumber": "D001_02",
+                    "title": "Ice",
+                    "subtitle": "Sea Ice Spiral",
+                    "description": "This graphics shows the temperature changes since 188x to today. The changes are dramatic!",
+                    "mediaURL": "https://svs.gsfc.nasa.gov/vis/a000000/a005000/a005028/Arctic_Spira_mi.mp4"
+                },
+                {
+                    "slideNumber": "D001_03",
+                    "title": "Now 1",
+                    "subtitle": "biosphere",
+                    "description": "The global biosphere has been helping to offset some of the excess carbon dioxide people have been pumping into the atmosphere.",
+                    "mediaURL": "https://svs.gsfc.nasa.gov/vis/a000000/a005000/a005075/nrtbio_annot_robinson_2048p30.mp4"
+                },
+                {
+                    "slideNumber": "D001_04",
+                    "title": "The sea",
+                    "subtitle": "Sea Surface Temperature",
+                    "description": "the temperature on the sea is changing based on the data provided from different organizations and institutions collecting this information.",
+                    "mediaURL": "https://svs.gsfc.nasa.gov/vis/a000000/a005100/a005101/sst_30_sec_robinson_4096x2048_2x1_30p.mp4"
+                },
+                {
+                    "slideNumber": "D001_05",
+                    "title": "Fires",
+                    "subtitle": "Earth's Active Fires",
+                    "description": "You can see the active fires that help understand events on the planet.",
+                    "mediaURL": "https://svs.gsfc.nasa.gov/vis/a000000/a005100/a005113/fires_frp_VIIRS_2048p30.mp4"
+                },
+                {
+                    "slideNumber": "D001_06",
+                    "title": "Wet and Dry",
+                    "subtitle": "Extreme Wet and Dry Events",
+                    "description": "We can observe that extreme droughts and floods are happening more frequently and with greater intensity.",
+                    "mediaURL": "https://svs.gsfc.nasa.gov/vis/a000000/a005000/a005087/WaterExtremes.webm"
+                }
+            ]
+        },
+        {
+            "markerID": "2",
+            "slides": [
+                {
+                    "slideNumber": "D002_01",
+                    "title": "True color imagery",
+                    "subtitle": "True Color Corrected",
+                    "description": "",
+                    "mediaURL": "https://worldview.earthdata.nasa.gov/?v=-180,-6,-5,80&df=true&kiosk=true&eic=si&l=OrbitTracks_Terra_Descending(opacity=0.9),Coastlines_15m,MODIS_Terra_CorrectedReflectance_TrueColor&lg=false&t=2023-06-11-T16%3A00%3A00Z"
+                },
+                {
+                    "slideNumber": "D002_02",
+                    "title": "Rain and Snow",
+                    "subtitle": "Precipitation Rate & Land Mask",
+                    "description": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+                    "mediaURL": "https://worldview.earthdata.nasa.gov/?v=-180,-87.5,180,92.5&df=true&kiosk=true&eic=si&l=IMERG_Precipitation_Rate,Land_Mask&lg=false&t=2023-10-30-T16%3A00%3A00Z"
+                },
+                {
+                    "slideNumber": "D002_03",
+                    "title": "Near Surface temperature",
+                    "subtitle": "Temperature (2meter)",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In iaculis nunc sed augue lacus viverra.",
+                    "mediaURL": ""
+                },
+                {
+                    "slideNumber": "D002_04",
+                    "title": "Nitrogen Oxides (NOx)",
+                    "subtitle": "Nitrogen Oxides (NOx)",
+                    "description": "",
+                    "mediaURL": "https://youtu.be/mBH_l74TQ4Y?feature=shared"
+                },
+                {
+                    "slideNumber": "D002_05",
+                    "title": "Other resources",
+                    "subtitle": "Related information to this content",
+                    "description": "* https://youtu.be/IHfqVe8eq4E?feature=shared",
+                    "mediaURL": ""
+                }
+            ]
+        },
+        {
+            "markerID": "3",
+            "slides": [
+                {
+                    "slideNumber": "D003_01",
+                    "title": "Keeling curve",
+                    "subtitle": "The curve data is updated",
+                    "description": "",
+                    "mediaURL": "https://youtu.be/KD3-_5_Y1RA"
+                }
+            ]
+        },
+        {
+            "markerID": "4",
+            "slides": [
+                {
+                    "slideNumber": "D004_02",
+                    "title": "Global Wind Patterns",
+                    "subtitle": "Earth's Atmospheric Circulation",
+                    "description": "This animation demonstrates the shifting global wind patterns due to changing climate conditions.",
+                    "mediaURL": "https://classic.nullschool.net/#current/wind/surface/level/orthographic=-5.11,-6.45,335/loc=-13.975,11.986"
+                }
+            ]
+        },
+        {
+            "markerID": "5",
+            "slides": [
+                {
+                    "slideNumber": "D005_01",
+                    "title": "Forest Coverage",
+                    "subtitle": "Global Deforestation Trends",
+                    "description": "Visualizing the rate of deforestation and its impact on global climate and biodiversity.",
+                    "mediaURL": "https://youtu.be/1oFz9pUauxQ?feature=shared"
+                },
+                {
+                    "slideNumber": "D005_02",
+                    "title": "Urban Heat Islands",
+                    "subtitle": "Temperature Variation in Cities",
+                    "description": "Showcasing how urban areas are significantly warmer than their rural surroundings, a phenomenon known as the urban heat island effect.",
+                    "mediaURL": "https://youtu.be/0Wevbkcg43g?feature=shared"
+                }
+            ]
+        }
+    ]
+}

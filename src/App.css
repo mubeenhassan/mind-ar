@@ -147,7 +147,7 @@ li {
 }
 
 .marker-slider {
-  max-width: 100%;
+  width: 100%;
   margin: 0 auto;
   padding: 0rem;
   height:70vh;
@@ -438,7 +438,6 @@ li {
   display: flex;
   max-width: 500px;
   justify-content: space-around;
-  padding-top: 30px;
 }
 .clip-path-footer {
   width: 100%;
@@ -455,8 +454,8 @@ li {
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  width: 60px;
-  height: 60px;
+  width: 30px;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
