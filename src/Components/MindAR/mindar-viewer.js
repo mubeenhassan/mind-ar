@@ -24,6 +24,7 @@ const ARScene = () => {
 
   useEffect(() => {
     if (!data) return;
+    // console.log(data)
     const sceneEl = sceneRef.current;
     const imageTargets = sceneEl.querySelectorAll('[mindar-image-target]');
     imageTargets.forEach((target, index) => {
@@ -69,11 +70,9 @@ const ARScene = () => {
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-
-      {data &&
-        data.map((item, index) => (
+      {data &&  data.slides.map((item, index) => (
           <a-entity key={index} mindar-image-target={`targetIndex: ${index}`}>
-            <a-text value={item.dashboard_id} color="white" position="0 1 0"></a-text>
+            <a-text value={item.markerID} color="white" position="0 1 0"></a-text>
           </a-entity>
         ))}
     </a-scene>

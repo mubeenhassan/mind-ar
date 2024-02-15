@@ -31,7 +31,6 @@ const GuidePopup = ({ onClose, t }) => {
         <h2>{index + 1}. {t(item.title)}</h2>
         <div className="guide-container">
           <img src={"/images/" + item.img + ".png"} alt={item.title} />
-
         </div>
       </div>
     ));

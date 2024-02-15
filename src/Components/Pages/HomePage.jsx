@@ -22,6 +22,7 @@ const HomePage = ({ t }) => {
   return (
     <div className="app-scan-container">
       <img className="scancamera-bg" src="/images/scan-bg.png" alt="" />
+      <div className="pb-90" />
       <div className="control-buttons">
         {started === null && <button className="button" onClick={() => { setStarted('aframe') }}>
           {t('start_scanning')}</button>}
@@ -32,6 +33,7 @@ const HomePage = ({ t }) => {
         <div className="AR_Scanner">
           <MindARViewer />
           <div className="scanconainer">
+            <img src="/images/target.png" alt="" />
             <div className="scanline" />
           </div>start_scanning
         </div>
