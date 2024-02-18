@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import FavIcon from "./FavIcon";
-import { useParams, useNavigate } from 'react-router-dom'; // Change navigate to useNavigate
+import { useParams } from 'react-router-dom'; // Change navigate to useNavigate
+import RenderSlide from "./RenderSlide";
 
-const SavedGallery = () => {
-    const videoRef = useRef(null);
-    const { targetId } = useParams();
-
+const SavedGallery = ({ t }) => {
+    const [initialData, setinitialData] = useState(null)
     const [dataToShow, setDataToShow] = useState(null);
     const [savedData, setSaveData] = useState(null)
+    const [targetId, setTargetId] = useState(null)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -29,12 +29,16 @@ const SavedGallery = () => {
     const filterData = (data) => {
         const URL = window.location.pathname;
         const existingFav = JSON.parse(localStorage.getItem('savedDataNew')) ?? [];
+        setinitialData(existingFav)
 
         for (const item of data.slides) {
             if (`/marker/${item.markerID}` === URL) {
                 const foundItem = existingFav.find(_item => `/marker/${_item.markerID}` === URL);
                 if (foundItem) {
-                    const filteredSlides = foundItem.slideIDs.map(slideIndex => item.slides[slideIndex]);
+                    setTargetId(foundItem.markerID)
+                    const filteredSlides = foundItem.slideIDs.map(slideIndex => {
+                        return { ...item.slides[slideIndex], itemIndex: slideIndex }
+                    });
                     return filteredSlides;
                 } else {
                     console.log("Item not found for markerID:", URL);
@@ -42,11 +46,10 @@ const SavedGallery = () => {
                 }
             }
         }
-        return null; // Return null if no matching item is found
+        return null;
     }
-
     const toggleSave = (index) => {
-        let existingFav = JSON.parse(localStorage.getItem('savedDataNew')) ?? [];
+        let existingFav = [...initialData]
         setSaveData(existingFav)
         const existingIndex = existingFav.findIndex(item => item.markerID === targetId);
 
@@ -65,39 +68,36 @@ const SavedGallery = () => {
                 slideIDs: [index]
             });
         }
-
-        localStorage.setItem('savedDataNew', JSON.stringify(existingFav));
+        setinitialData(existingFav);
     };
+    const handleSave = () => {
+        localStorage.setItem('savedDataNew', JSON.stringify(initialData));
+        window.location.reload(); // Reload the application
 
-
+    }
+    console.log("remed", initialData)
     return (
-        <div className="popup-saved">
-            {dataToShow?.map((items, key) => (<div className="saved-box">
-            <div className='slider-item-title-container'>
-
-            <div className='slider-btn-header' >
-                      
-                      <div className="slider-item-title-text">
-                        <h2>{items.title}</h2>
-                        <p>{items.subtitle}</p>
-                      </div>
+        <>
+            <button className="confirm-btn" onClick={handleSave}>{t('confirm')}</button>
+            <div className="popup-saved">
+                {dataToShow?.map((items, key) => (<div className="saved-box">
+                    <div className='slider-item-title-container'>
+                        <div className='slider-btn-header' >
+                            <div className="slider-item-title-text">
+                                <h2>{items.title}</h2>
+                                <p>{items.subtitle}</p>
+                            </div>
+                        </div>
+                        {/* {    console.log(initialData)
+} */}
+                        <FavIcon key={key} id={items.itemIndex} targetId={targetId} initialData={initialData} toggleSave={toggleSave} />
                     </div>
-                <FavIcon id={key} targetId={targetId} toggleSave={toggleSave} />
-                </div>
-                <div className="media-box">
-                    {items.mediaURL?.includes(".mp4") ?
-                        <video
-                            ref={videoRef}
-                            controls={true}
-                        >
-                            <source src={items.mediaURL} type="video/mp4" />
-                            Your browser does not support the video tag.
-                        </video> : <img src="" />
-                    }
-                </div>
-            </div>))}
-
-        </div>
+                    <div className="media-box">
+                        <RenderSlide src={items.mediaURL} savedData />
+                    </div>
+                </div>))}
+            </div>
+        </>
     );
 };
 

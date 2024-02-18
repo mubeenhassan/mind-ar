@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom'; // Change navigate to useNavigate
+import { useParams, useNavigate } from 'react-router-dom';
 import CustomSlider from '../Elements/CustomSlider';
 import FavIcon from '../Elements/FavIcon';
 import RenderSlide from '../Elements/RenderSlide';
+
 const MarkerSlider = ({ t }) => {
   const navigate = useNavigate();
-
   const { targetId } = useParams();
   const [targetData, setTargetData] = useState(null);
   const [loader, setLoader] = useState(true);
@@ -32,7 +32,7 @@ const MarkerSlider = ({ t }) => {
     let existingFav = JSON.parse(localStorage.getItem('savedDataNew')) ?? [];
     setSaveData(existingFav)
     fetchData();
-  }, [targetId, useNavigate]); // Change navigate to useNavigate
+  }, [targetId, useNavigate]);
 
   const toggleSave = (index) => {
     let existingFav = JSON.parse(localStorage.getItem('savedDataNew')) ?? [];
@@ -58,16 +58,18 @@ const MarkerSlider = ({ t }) => {
     localStorage.setItem('savedDataNew', JSON.stringify(existingFav));
   };
 
-
   const onClose = () => {
     navigate(`/`);
   }
   if (loader) {
-    return <h1>{t('loading')}...</h1>;
+    return <div className="marker-slider-container">
+      <img className="guide-top" src="/images/top.png" alt="guide top" />
+      <h1 className='loading-text'>{t('loading')}...</h1>
+    </div>;
   }
   return (
     <div className="marker-slider-container">
-      <img className="guide-top" src="/images/guide-top.png" alt="guide top" />
+      <img className="guide-top" src="/images/top.png" alt="guide top" />
       <div className='header-saved'>
         {
           savedData
@@ -100,8 +102,6 @@ const MarkerSlider = ({ t }) => {
                   </div>
                   <div className='slider-main-center-container'>
                     <RenderSlide src={item.mediaURL} />
-                    {/* <img src='https://worldview.earthdata.nasa.gov/?v=-180,-87.5,180,92.5&df=true&kiosk=true&eic=si&l=IMERG_Precipitation_Rate,Land_Mask&lg=false&t=2023-10-30-T16%3A00%3A00Z' /> */}
-                    {/* <iframe src="https://worldview.earthdata.nasa.gov/?v=-180,-87.5,180,92.5&df=true&kiosk=true&eic=si&l=IMERG_Precipitation_Rate,Land_Mask&lg=false&t=2023-10-30-T16%3A00%3A00Z" role="application" sandbox="allow-modals allow-scripts allow-same-origin allow-forms allow-popups" width="100%" height="100%" allow="fullscreen; autoplay;" loading="lazy"></iframe> */}
                   </div>
                   <p className='slider-item-description'>{item.description}</p>
                 </div>
@@ -109,7 +109,6 @@ const MarkerSlider = ({ t }) => {
             }
           </CustomSlider>
         )}
-      
         <button className="close-btn" onClick={onClose}>
           &times;
         </button>

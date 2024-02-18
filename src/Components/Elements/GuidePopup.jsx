@@ -16,8 +16,16 @@ const GuidePopup = ({ onClose, t }) => {
       img: "img-3",
     },
     {
+      title: "save_items_to_your_collection",
+      img: "save-items",
+    },
+    {
       title: "save_your_collection",
       img: "img-4",
+    },
+    {
+      title: "share_items",
+      img: "share-items",
     },
     {
       title: "ready_tap_the_x",
@@ -28,7 +36,7 @@ const GuidePopup = ({ onClose, t }) => {
   const renderInstructionImages = () => {
     return instructionImages.map((item, index) => (
       <div key={index} className="slider_item">
-        <h2>{index + 1}. {t(item.title)}</h2>
+        <h2>{t(item.title)}</h2>
         <div className="guide-container">
           <img src={"/images/" + item.img + ".png"} alt={item.title} />
         </div>

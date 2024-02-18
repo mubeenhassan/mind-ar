@@ -76,13 +76,13 @@
                     "title": "Nitrogen Oxides (NOx)",
                     "subtitle": "Nitrogen Oxides (NOx)",
                     "description": "",
-                    "mediaURL": "https://youtu.be/mBH_l74TQ4Y?feature=shared"
-                },
+                    "mediaURL": "https://www.youtube.com/embed/mBH_l74TQ4Y?si=0Qs8fKioEjJ2zd4M"
+                },                
                 {
                     "slideNumber": "D002_05",
                     "title": "Other resources",
                     "subtitle": "Related information to this content",
-                    "description": "* https://youtu.be/IHfqVe8eq4E?feature=shared",
+                    "description": "https://www.youtube.com/embed/IHfqVe8eq4E?si=-aY8H78ub2zrqz7d",
                     "mediaURL": ""
                 }
             ]
@@ -95,7 +95,7 @@
                     "title": "Keeling curve",
                     "subtitle": "The curve data is updated",
                     "description": "",
-                    "mediaURL": "https://youtu.be/KD3-_5_Y1RA"
+                    "mediaURL": "https://www.youtube.com/embed/KD3-_5_Y1RA?si=xvJCev-PLbGwu5xz" 
                 }
             ]
         },
@@ -119,14 +119,14 @@
                     "title": "Forest Coverage",
                     "subtitle": "Global Deforestation Trends",
                     "description": "Visualizing the rate of deforestation and its impact on global climate and biodiversity.",
-                    "mediaURL": "https://youtu.be/1oFz9pUauxQ?feature=shared"
+                    "mediaURL": "https://www.youtube.com/embed/1oFz9pUauxQ?si=fW443hnz1EXsnL3L"
                 },
                 {
                     "slideNumber": "D005_02",
                     "title": "Urban Heat Islands",
                     "subtitle": "Temperature Variation in Cities",
                     "description": "Showcasing how urban areas are significantly warmer than their rural surroundings, a phenomenon known as the urban heat island effect.",
-                    "mediaURL": "https://youtu.be/0Wevbkcg43g?feature=shared"
+                    "mediaURL": "https://www.youtube.com/embed/0Wevbkcg43g?si=1Ab1-HzL5kY-3DhD"
                 }
             ]
         }

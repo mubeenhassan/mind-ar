@@ -1,5 +1,6 @@
 {
     "allow_access": "Allow Access",
+    "confirm": "Confirm",
     "instructions": "Instructions",
     "help": "Help",
     "ready_tap_the_x": "Ready?! Tap the X to start scanning",
@@ -12,7 +13,9 @@
     "help_step_4": "Step 4: Back to Scanning Mode",
     "help_step_5": "Step 5: Need Help?",
     "loading": "Loading",
+    "save_items_to_your_collection":"Save items to your collection",
     "share": "Share",
+    "share_items": "Share your collection",
     "start_scanning": "Start",
     "stop": "Stop"
 }

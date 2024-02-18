@@ -30,7 +30,7 @@ const Footer = ({ t }) => {
         </div>
       </footer>
       {showPopupSavedItem && <Popup savedGallary onClose={handleClose} className="saved-gallery" >
-        <SavedGallery  />
+        <SavedGallery t={t} />
         </Popup>}
       {showPopup && <GuidePopup onClose={() => setShowPopup(false)} t={t} />}
       <ShareButton showSharePopup={showSharePopup} onClose={() => setShowSharePopup(false)} />

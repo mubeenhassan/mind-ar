@@ -13,7 +13,7 @@
 .header-saved {
   display: flex;
   height: 68px;
-  margin-top: 76px;
+  margin-top: 60px;
   position: absolute;
   max-width: 500px;
   width: 100%;
@@ -33,7 +33,7 @@
   width: 100%;
 }
 .pb-90 {
-  padding-top: 150px;
+  padding-top: 120px;
 }
 
 ul,
@@ -129,7 +129,6 @@ li {
 
 .slider-item-title-container {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   overflow: hidden;
   margin-bottom: 24px;
@@ -183,7 +182,7 @@ li {
   width: 100%;
   margin: 0 auto;
   padding: 0rem;
-  height: 70vh;
+  height: 66vh;
   position: absolute;
   left: 50%;
   top: 0;
@@ -322,10 +321,12 @@ li {
   background-color: black;
   border: none;
   cursor: pointer;
-  font-size: 50px;
+  font-size: 32px;
   color: #0a99ff;
-  width: 48px;
-  height: 48px;
+  padding: 4px;
+  margin: 0;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -375,12 +376,13 @@ li {
   transition: 0.5s;
   transform: translateY(61%);
   bottom: 0;
+  width: fit-content;
 }
 
 .showpopup {
   opacity: 1;
   z-index: 1;
-  transform: translateY(-60%);
+  transform: translateY(-32%);
   transition: 0.5s;
 }
 
@@ -409,7 +411,7 @@ li {
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  padding: 1rem 2rem;
+  padding: 6px 12px;
   margin: auto;
 }
 
@@ -423,24 +425,33 @@ li {
 }
 
 .scanconainer {
-  width: 91%;
+  width: 90%;
   height: 80%;
   background: transparent;
   position: absolute;
   left: 50%;
   z-index: -1;
-  margin-top: 12%;
+  margin-top: 16%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
-
+.bg {
+  width: 100%;
+  height: 100%;
+  background: green;
+  z-index: -2;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
 .scanconainer img {
-  width: 86%;
+  width: 80%;
   background: #d0e1d38c;
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -66%);
 }
 
 .scanline {
@@ -456,7 +467,7 @@ li {
 
 /* Additional styling for the slider can be added here */
 .app-scan-container {
-  height: 100vh;
+  height: 90vh;
   position: relative;
 }
 
@@ -473,13 +484,18 @@ li {
   position: relative;
   overflow: hidden;
 }
-
 .videoPlayerWraper {
   position: relative;
 }
 
+.marker-slider .video-conainer {
+  width: 100%;
+  height: 230px;
+}
+
 .videoPlayerWraper video {
   width: 100%;
+  height: 100%;
 }
 
 .play-button {
@@ -537,26 +553,45 @@ li {
   margin-left: 20px;
 }
 .popup-saved {
+  height: 76vh;
+  overflow: auto;
   display: flex;
   flex-flow: wrap;
   justify-content: center;
 }
 .saved-box{
-  width: 200px;
-  height: 200px;
+  width: 176px;
+  height: 255px;
   text-align: left;
-  margin: 12px;
+  margin: 8px;
   overflow: hidden;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+  padding: 6px;
 }
 .saved-box h2 {
   margin: 0;
+  font-size: 16px;
   color: white;
-  
 }
 .saved-box p {
   margin: 0;
+  font-size: 12px;
   color: blue;
-
+}
+.saved-box .videoPlayerWraper {
+  width: 150px;
+  height: 124px;
+  margin: auto;
+}
+.saved-box .videoPlayerWraper .mockup-saved {
+  width: 150px;
+  margin: auto;
+  height: 150px;
+  overflow: hidden;
+}
+.saved-box .yt-frame {
+  width: 100%;
+  height: 100%;
 }
 .saved-box .media-box {
   width: 100%;
@@ -570,4 +605,25 @@ li {
 .saved-gallery {
   background: none;
   width: 100%;
+  padding: 4px;
+  margin-top: -40px;
+  scrollbar-width: thin;          /* "auto" or "thin" */
+  scrollbar-color: blue rgb(240, 239, 236);   /* scroll thumb and track */ 
+}
+.yt-frame {
+  width: 100%;
+}
+.confirm-btn {
+  background: red;
+  padding: 6px 12px;
+  border: none;
+  color: white;
+  margin:  36% 0 16px 0;
+}
+.loading-text {
+  position: absolute;
+  left: 50%;
+  color: white;
+  top: 50%;
+  transform: translate(-50%,-50%);
 }

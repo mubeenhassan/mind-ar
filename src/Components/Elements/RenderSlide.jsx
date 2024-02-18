@@ -1,9 +1,10 @@
 import React, { useRef, useState } from 'react';
 
-const RenderSlide = ({ src }) => {
+const RenderSlide = ({ src, savedData }) => {
     const videoRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isNsaImage, setIsNsaImage] = useState(src.includes('worldview.earthdata.nasa.gov'));
+    const [isYoutube, setIsYoutube] = useState(src.includes('www.youtube.com'));
 
     const togglePlay = () => {
         const video = videoRef.current;
@@ -20,12 +21,12 @@ const RenderSlide = ({ src }) => {
     return (
         <div className='videoPlayerWraper'>
             {isNsaImage ? (
-                <div>
-                    <img src="" />
-
+                <div className='mockup-saved'>
+                    <img src="/images/mockupslider.png" />
                 </div>
+            ) : isYoutube ? (<iframe className='yt-frame' width="560" height="315" src={src} frameborder="0" allowfullscreen></iframe>
             ) : (
-                <div>
+                <div className='video-conainer'>
                     <video
                         ref={videoRef}
                         controls={false}
@@ -41,9 +42,9 @@ const RenderSlide = ({ src }) => {
                     </div>
                 </div>
             )}
-            <div className='play-button' onClick={togglePlay}>
+            {!isNsaImage || !isYoutube || savedData && <div className='play-button' onClick={togglePlay}>
                 {isPlaying ? <img src="/images/icon/pause.png" alt="play" /> : <img src="/images/icon/play.svg" alt="play" />}
-            </div>
+            </div>}
         </div>
     );
 };
