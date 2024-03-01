@@ -12,6 +12,7 @@ const ARScene = () => {
 
   useEffect(() => {
     fetchData();
+  
     const sceneEl = sceneRef.current;
     const arSystem = sceneEl.systems["mindar-image-system"];
     sceneEl.addEventListener('renderstart', () => {
@@ -23,7 +24,7 @@ const ARScene = () => {
   }, [navigate]);
 
   useEffect(() => {
-    if (!data) return;
+       if (!data) return;
     // console.log(data)
     const sceneEl = sceneRef.current;
     const imageTargets = sceneEl.querySelectorAll('[mindar-image-target]');
@@ -55,8 +56,11 @@ const ARScene = () => {
       embedded
       renderer="colorManagement: true, physicallyCorrectLights"
       vr-mode-ui="enabled: false"
-      device-orientation-permission-ui="enabled: false"
-    >
+      device-orientation-permission-ui="enabled: true"
+    >   
+     <a-box position='0 3.5 0' material='opacity: 0.5;'></a-box>
+
+
       <a-assets>
         <img
           id="card"
@@ -69,7 +73,7 @@ const ARScene = () => {
         ></a-asset-item>
       </a-assets>
 
-      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+      <a-camera position="4 8 0" look-controls="enabled: false"></a-camera>
       {data &&  data.slides.map((item, index) => (
           <a-entity key={index} mindar-image-target={`targetIndex: ${index}`}>
             <a-text value={item.markerID} color="white" position="0 1 0"></a-text>

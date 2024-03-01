@@ -5,31 +5,27 @@ const GuidePopup = ({ onClose, t }) => {
   const instructionImages = [
     {
       title: "allow_access",
-      img: "img-1",
+      img: "1",
     },
     {
       title: "scan_ar_marker",
-      img: "img-2",
+      img: "2",
     },
     {
       title: "scan_more_marker",
-      img: "img-3",
+      img: "3",
     },
     {
       title: "save_items_to_your_collection",
-      img: "save-items",
+      img: "4",
     },
     {
       title: "save_your_collection",
-      img: "img-4",
-    },
-    {
-      title: "share_items",
-      img: "share-items",
+      img: "5",
     },
     {
       title: "ready_tap_the_x",
-      img: "img-5",
+      img: "6",
     },
   ];
 
@@ -38,7 +34,7 @@ const GuidePopup = ({ onClose, t }) => {
       <div key={index} className="slider_item">
         <h2>{t(item.title)}</h2>
         <div className="guide-container">
-          <img src={"/images/" + item.img + ".png"} alt={item.title} />
+          <img src={"/images/intro/" + item.img + ".png"} alt={item.title} />
         </div>
       </div>
     ));

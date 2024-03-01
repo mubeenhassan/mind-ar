@@ -8,6 +8,7 @@
   padding-top: 90px;
   left: 50%;
   top: 80%;
+  z-index: 111;
   transform: translate(-50%, -50%);
 }
 .header-saved {
@@ -51,7 +52,7 @@ li {
 .AR_Scanner {
   position: relative;
   width: 100%;
-  max-height: 60%;
+  /* max-height: 60%; */
   overflow: hidden;
   height: 100%;
   margin-bottom: 0;
@@ -311,12 +312,13 @@ li {
 }
 
 .popup-overlay .close-btn {
-  bottom: 12vh;
+  bottom: 8%;
+  left: 2px;
 }
 
 .close-btn {
   position: absolute;
-  left: 10px;
+  left: 4px;
   bottom: 0;
   background-color: black;
   border: none;
@@ -426,13 +428,13 @@ li {
 
 .scanconainer {
   width: 90%;
-  height: 80%;
+  height: 45%;
   background: transparent;
   position: absolute;
   left: 50%;
   z-index: -1;
   margin-top: 16%;
-  top: 50%;
+  top: 38%;
   transform: translate(-50%, -50%);
 }
 .bg {
@@ -513,7 +515,7 @@ li {
   bottom: 0;
   z-index: 111;
   width: 100%;
-  padding: 14px 0;
+  padding: 26px 0 14px 0;
   display: flex;
   max-width: 500px;
   justify-content: space-around;
@@ -524,10 +526,10 @@ li {
   position: absolute;
   background: #101e26;
   height: 100%;
-  clip-path: polygon(21% 15%, 26% 0, 100% 0, 100% 100%, 0 100%, 0 15%);
   z-index: -1;
   top: 0;
   left: 0;
+  clip-path: polygon(36% 16%, 92% 14%, 94% 0, 100% 0, 100% 100%, 0 100%, 0 29%, 32% 29%);
 }
 
 .footer-button {
@@ -535,8 +537,8 @@ li {
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  width: 30px;
-  height: 30px;
+  width: 22px;
+  height: 22px;
   display: flex;
   align-items: center;
   justify-content: center;

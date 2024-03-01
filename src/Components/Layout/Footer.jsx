@@ -16,12 +16,13 @@ const Footer = ({ t }) => {
     <div className={!showSharePopup && 'main-footer'}>
       <footer className="footer-container">
         <div className='clip-path-footer' />
-        <div className="footer-button">
-          <LanguageSelector />
-        </div>
         <div className="footer-button" onClick={() => setShowPopup(true)}>
           <img src='/images/icon/help.svg' alt='help' />
         </div>
+        <div className="footer-button">
+          <LanguageSelector />
+        </div>
+      
         <div className="footer-button" onClick={() => setShowPopupSavedItem(!showPopupSavedItem)}>
           <img src='/images/icon/star.svg' alt='star' />
         </div>

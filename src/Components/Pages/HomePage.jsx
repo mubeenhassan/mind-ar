@@ -7,10 +7,9 @@ const HomePage = ({ t }) => {
   const [showPopup, setShowPopup] = useState(true);
 
   useEffect(() => {
-    // Check if the preference is stored in the browser cache
     const isFirstVisit = localStorage.getItem('showGuidePopup') !== 'false';
     setShowPopup(isFirstVisit); // Show the popup only on the first visit
-  }, []);
+  }, [started]);
 
   const handleClosePopup = () => {
     setStarted('aframe')
@@ -18,13 +17,16 @@ const HomePage = ({ t }) => {
     localStorage.setItem('showGuidePopup', 'false');
 
   }
+  const handleStart = () => {
+    setStarted('aframe')
+   }
 
   return (
     <div className="app-scan-container">
-      <img className="scancamera-bg" src="/images/Vector.png" alt="" />
-      <div className="pb-90" />
+      <img className="scancamera-bg" src="/images/UI_scanning.png" alt="" />
+      {/* <div className="pb-90" /> */}
       <div className="control-buttons">
-        {started === null && <button className="button" onClick={() => { setStarted('aframe') }}>
+        {started === null && <button className="button" onClick={handleStart}>
           {t('start_scanning')}</button>}
         {started !== null && <button className="button" onClick={() => { setStarted(null) }}>
           {t('stop')}</button>}
@@ -34,9 +36,8 @@ const HomePage = ({ t }) => {
         <div className="AR_Scanner">
           <MindARViewer />
           <div className="scanconainer">
-            <img src="/images/target.png" alt="" />
             <div className="scanline" />
-          </div>start_scanning
+          </div>
         </div>
       )}
       {showPopup && <GuidePopup onClose={handleClosePopup} t={t} />}
