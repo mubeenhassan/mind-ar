@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import CustomSlider from '../Elements/CustomSlider';
 import FavIcon from '../Elements/FavIcon';
 import RenderSlide from '../Elements/RenderSlide';
@@ -10,8 +10,22 @@ const MarkerSlider = ({ t }) => {
   const [targetData, setTargetData] = useState(null);
   const [loader, setLoader] = useState(true);
   const [savedData, setSaveData] = useState(null)
+  const [dataFromUrl, setDataFromUrl] = useState(null)
+  const location = useLocation();
 
   useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const savedDataParam = queryParams.get('savedData');
+
+    if (savedDataParam) {
+      // Process savedDataParam here
+
+      const savedDataArray = savedDataParam.split('+');
+      const dataArray = savedDataArray.map(slideId => ({ markerID: targetId, slideIDs: slideId.split(' ').map(Number) }));
+
+      setDataFromUrl(dataArray)
+
+    }
     const fetchData = async () => {
       try {
         const response = await fetch('/data.json');
@@ -56,6 +70,9 @@ const MarkerSlider = ({ t }) => {
     }
 
     localStorage.setItem('savedDataNew', JSON.stringify(existingFav));
+    const queryParams = existingFav.map((item) => `${item.slideIDs.join('+')}`).join('+');
+    const dataArray = queryParams.split('+').map(Number);
+    navigate(`/marker/${targetId}?savedData=${queryParams}`);
   };
 
   const onClose = () => {
@@ -67,13 +84,16 @@ const MarkerSlider = ({ t }) => {
       <h1 className='loading-text'>{t('loading')}...</h1>
     </div>;
   }
+  const dataToRender = savedData.length === 0 ? dataFromUrl : savedData
+
   return (
     <div className="marker-slider-container">
+
       <img className="guide-top" src="/images/top.png" alt="guide top" />
       <div className='header-saved'>
+      
         {
-          savedData
-            .filter(i => i.markerID === targetId)
+          dataToRender?.filter(i => i.markerID === targetId)
             .flatMap(i => i.slideIDs.map(d => (
               <div key={d} className='saved-item'>
                 <img src={`/images/placeholder/${d}.svg`} alt="placeholder" />
@@ -87,7 +107,6 @@ const MarkerSlider = ({ t }) => {
             {
               targetData.map((item, index) => (
                 <div key={index} className="slider-item ">
-                  {/* {console.log(item)} */}
                   <div className='slider-item-title-container'>
                     <div className='slider-btn-header' >
                       <div className='profile-img'>
@@ -98,7 +117,7 @@ const MarkerSlider = ({ t }) => {
                         <p>{item.subtitle}</p>
                       </div>
                     </div>
-                    <FavIcon id={index} targetId={targetId} toggleSave={toggleSave} />
+                    <FavIcon id={index} targetId={targetId} toggleSave={toggleSave} dataFromUrl={dataFromUrl} />
                   </div>
                   <div className='slider-main-center-container'>
                     <RenderSlide src={item.mediaURL} />

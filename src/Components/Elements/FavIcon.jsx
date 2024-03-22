@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const FavIcon = ({ id, targetId, toggleSave, initialData }) => {
+const FavIcon = ({ id, targetId, toggleSave, initialData, dataFromUrl }) => {
   const [fav, setFav] = useState(false);
   const handleFavClick = () => {
     toggleSave(id);
@@ -8,7 +8,7 @@ const FavIcon = ({ id, targetId, toggleSave, initialData }) => {
   };
 
   const isFav = () => {
-    const existingFav = (initialData || JSON.parse(localStorage.getItem("savedDataNew"))) ?? [];
+    const existingFav = (initialData || dataFromUrl || JSON.parse(localStorage.getItem("savedDataNew"))) ?? [];
     const existingIndex = existingFav.findIndex(
       (item) => item.markerID === targetId
     );
