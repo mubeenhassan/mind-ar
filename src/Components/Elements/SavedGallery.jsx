@@ -1,39 +1,67 @@
 import React, { useState, useEffect, useRef } from "react";
 import FavIcon from "./FavIcon";
-import { useParams } from 'react-router-dom'; // Change navigate to useNavigate
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import RenderSlide from "./RenderSlide";
 
 const SavedGallery = ({ t }) => {
+    
     const [initialData, setinitialData] = useState(null)
     const [dataToShow, setDataToShow] = useState(null);
     const [savedData, setSaveData] = useState(null)
+    const [dataFromUrl, setDataFromUrl] = useState(null)
+    const location = useLocation();
+
+
+
     const [targetId, setTargetId] = useState(null)
+    // console.log(parseInt(useLocation().pathname.split("/marker/")[1]))
+    // setTargetId(urlTargetId)
+
+
+
+    const fetchData = async () => {
+        try {
+            const response = await fetch('/data.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            const data = await response.json();
+            const filteredData = filterData(data);
+            setDataToShow(filteredData);
+        } catch (error) {
+            console.error('Error fetching data:', error.message);
+        }
+    };
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('/data.json');
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                const data = await response.json();
-                const filteredData = filterData(data);
-                setDataToShow(filteredData);
-            } catch (error) {
-                console.error('Error fetching data:', error.message);
-            }
-        };
+        const urlTargetId= parseInt(location.pathname.split("/marker/")[1])
+        const queryParams = new URLSearchParams(location.search);
+        const savedDataParam = queryParams.get('savedData');
+
+        if (savedDataParam) {
+            const savedDataArray = savedDataParam.split('+');
+            const dataArray = savedDataArray.map(slideId => ({ markerID: urlTargetId, slideIDs: slideId.split(' ').map(Number) }));
+            setDataFromUrl(dataArray)
+        }    
+
         fetchData();
     }, []);
+    useEffect(()=>{
+
+        fetchData();
+    },[dataFromUrl])
 
     const filterData = (data) => {
         const URL = window.location.pathname;
-        const existingFav = JSON.parse(localStorage.getItem('savedDataNew')) ?? [];
+        const existingFav = (dataFromUrl || JSON.parse(localStorage.getItem('savedDataNew'))) ?? [];
         setinitialData(existingFav)
+        console.log("dataFromUrl",dataFromUrl)
 
         for (const item of data.slides) {
             if (`/marker/${item.markerID}` === URL) {
                 const foundItem = existingFav.find(_item => `/marker/${_item.markerID}` === URL);
+                console.log("fouunditem",foundItem)
+
                 if (foundItem) {
                     setTargetId(foundItem.markerID)
                     const filteredSlides = foundItem.slideIDs.map(slideIndex => {
@@ -48,11 +76,12 @@ const SavedGallery = ({ t }) => {
         }
         return null;
     }
+    
+
     const toggleSave = (index) => {
         let existingFav = [...initialData]
         setSaveData(existingFav)
         const existingIndex = existingFav.findIndex(item => item.markerID === targetId);
-
         if (existingIndex !== -1) {
             if (existingFav[existingIndex].slideIDs.includes(index)) {
                 existingFav[existingIndex].slideIDs = existingFav[existingIndex].slideIDs.filter(id => id !== index);
@@ -72,10 +101,13 @@ const SavedGallery = ({ t }) => {
     };
     const handleSave = () => {
         localStorage.setItem('savedDataNew', JSON.stringify(initialData));
+        const queryParams = initialData.map(item => `${item.slideIDs.join('+')}`);
+        window.history.pushState({}, '', `/marker/${targetId}?savedData=${queryParams}`);
         window.location.reload(); // Reload the application
-
+       
     }
-    console.log("remed", initialData)
+
+
     return (
         <>
             <button className="confirm-btn" onClick={handleSave}>{t('confirm')}</button>
