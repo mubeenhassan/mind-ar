@@ -60,12 +60,6 @@ const RenderSlide = ({ src, savedData }) => {
                     </div>}
                 </div>
             )}
-
-            {(!isNsaImage && !isYoutube && savedData) && (
-                <div className='play-button' onClick={togglePlay}>
-                    {isPlaying ? <img src="/images/icon/pause.png" alt="pause" /> : <img src="/images/icon/play.svg" alt="play" />}
-                </div>
-            )}
         </div>
     );
 };
