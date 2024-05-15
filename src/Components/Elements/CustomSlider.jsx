@@ -8,13 +8,13 @@ const CustomSlider = ({ children }) => {
 
   const CustomPrevButton = ({ onClick, children }) => (
     <button className="prev-arrow-button" onClick={onClick}>
-      <img src="/images/arrow-prev.svg" alt="Prev Button" />
+      <img src="/images/arrow.png" alt="Prev Button" />
     </button>
   );
 
   const CustomNextButton = ({ onClick }) => (
     <button className="next-arrow-button" onClick={onClick}>
-      <img src="/images/arrow-next.svg" alt="Next Button" />
+      <img src="/images/arrow.png" alt="Next Button" />
     </button>
   );
 

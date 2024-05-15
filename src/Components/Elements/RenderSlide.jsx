@@ -17,12 +17,16 @@ const RenderSlide = ({ src, savedData }) => {
             setIsPlaying(false);
         }
     };
-
     return (
         <div className='videoPlayerWraper'>
-            {isNsaImage ? (
+            { src === '' ? <p className='noSourceFound'>
+                404 Source Not Found
+            </p>: 
+            isNsaImage ? (
                 <div className='mockup-saved'>
                     <img src="/images/mockupslider.png" />
+                    <a href={src} target="_blank">Open NASA Worldview</a>
+
                 </div>
             ) : isYoutube ? (<iframe className='yt-frame' width="560" height="315" src={src} frameborder="0" allowfullscreen></iframe>
             ) : (
@@ -42,6 +46,7 @@ const RenderSlide = ({ src, savedData }) => {
                     </div>
                 </div>
             )}
+
             {!isNsaImage || !isYoutube || savedData && <div className='play-button' onClick={togglePlay}>
                 {isPlaying ? <img src="/images/icon/pause.png" alt="play" /> : <img src="/images/icon/play.svg" alt="play" />}
             </div>}

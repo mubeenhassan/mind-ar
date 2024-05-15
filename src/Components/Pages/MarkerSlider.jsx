@@ -91,7 +91,7 @@ const MarkerSlider = ({ t }) => {
 
       <img className="guide-top" src="/images/top.png" alt="guide top" />
       <div className='header-saved'>
-      
+
         {
           dataToRender?.filter(i => i.markerID === targetId)
             .flatMap(i => i.slideIDs.map(d => (
@@ -128,10 +128,11 @@ const MarkerSlider = ({ t }) => {
             }
           </CustomSlider>
         )}
-        <button className="close-btn" onClick={onClose}>
+       
+      </div>
+      <button className="close-btn" onClick={onClose}>
           &times;
         </button>
-      </div>
     </div>
   );
 };
