@@ -671,7 +671,7 @@ li {
   padding: 6px 12px;
   border: none;
   color: white;
-  margin: 36% 0 16px 0;
+  margin: 20% 0 16px 0;
 }
 
 .loading-text {
@@ -681,3 +681,36 @@ li {
   top: 50%;
   transform: translate(-50%, -50%);
 }
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top: 4px solid #000;
+  width: 40px;
+  height: 40px;
+  -webkit-animation: spin 1s linear infinite; /* Safari */
+  animation: spin 1s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.video-container {
+  position: relative;
+}
+
+.footer-button.disabled {
+  opacity: 0.5;
+  pointer-events: none; /* This will make the button non-interactive */
+}
+

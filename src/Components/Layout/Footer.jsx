@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import GuidePopup from '../Elements/GuidePopup';
 import LanguageSelector from '../LanguageSelector';
 import ShareButton from '../Elements/ShareButton';
@@ -12,6 +12,7 @@ const Footer = ({ t }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [showPopupSavedItem, setShowPopupSavedItem] = useState(false);
   const [showSharePopup, setShowSharePopup] = useState(false);
+  const [isMarkerPath, setIsMarkerPath] = useState(false);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -19,7 +20,11 @@ const Footer = ({ t }) => {
     if (galleryParam === 'true') {
       setShowPopupSavedItem(true);
     }
-  }, []);
+  }, [location]);
+
+  useEffect(() => {
+    setIsMarkerPath(location.pathname.includes('/marker/'));
+  }, [location.pathname]);
 
   const handleShowSavedGallery = () => {
     setShowPopupSavedItem(!showPopupSavedItem);
@@ -49,17 +54,17 @@ const Footer = ({ t }) => {
         <div className="footer-button">
           <LanguageSelector />
         </div>
-      
-        <div className="footer-button" onClick={handleShowSavedGallery}>
+
+        <div className={`footer-button ${!isMarkerPath ? 'disabled' : ''}`} onClick={isMarkerPath ? handleShowSavedGallery : null}>
           <img src='/images/icon/star.svg' alt='star' />
         </div>
         <div className="footer-button" onClick={() => setShowSharePopup(!showSharePopup)}>
           <img src='/images/icon/share.svg' alt='share' />
         </div>
       </footer>
-      {showPopupSavedItem && <Popup savedGallary onClose={handleClose} className="saved-gallery" >
+      {showPopupSavedItem && <Popup savedGallary onClose={handleClose} className="saved-gallery">
         <SavedGallery t={t} />
-        </Popup>}
+      </Popup>}
       {showPopup && <GuidePopup onClose={() => setShowPopup(false)} t={t} />}
       <ShareButton showSharePopup={showSharePopup} onClose={() => setShowSharePopup(false)} />
     </div>
