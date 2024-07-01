@@ -52,30 +52,35 @@ const SavedGallery = ({ t }) => {
     },[dataFromUrl])
 
     const filterData = (data) => {
-        const URL = window.location.pathname;
-        const existingFav = (dataFromUrl || JSON.parse(localStorage.getItem('savedDataNew'))) ?? [];
-        setinitialData(existingFav)
-        console.log("dataFromUrl",dataFromUrl)
+    const URL = window.location.pathname;
+    const existingFav = (dataFromUrl || JSON.parse(localStorage.getItem('savedDataNew'))) ?? [];
+    setinitialData(existingFav);
 
-        for (const item of data.slides) {
-            if (`/marker/${item.markerID}` === URL) {
-                const foundItem = existingFav.find(_item => `/marker/${_item.markerID}` === URL);
-                console.log("fouunditem",foundItem)
+    for (const item of data.slides) {
+        if (`/marker/${item.markerID}` === URL) {
+            const foundItem = existingFav.find(_item => `/marker/${_item.markerID}` === URL);
 
-                if (foundItem) {
-                    setTargetId(foundItem.markerID)
-                    const filteredSlides = foundItem.slideIDs.map(slideIndex => {
-                        return { ...item.slides[slideIndex], itemIndex: slideIndex }
-                    });
-                    return filteredSlides;
-                } else {
-                    console.log("Item not found for markerID:", URL);
-                    return null;
-                }
+            if (foundItem) {
+                setTargetId(foundItem.markerID);
+                const filteredSlides = foundItem.slideIDs.map(slideIndex => {
+                    return { ...item.slides[slideIndex], itemIndex: slideIndex }
+                });
+
+                // Remove duplicates from slideIDs
+                const uniqueSlideIDs = Array.from(new Set(foundItem.slideIDs));
+
+                return uniqueSlideIDs.map(slideIndex => {
+                    return { ...item.slides[slideIndex], itemIndex: slideIndex }
+                });
+            } else {
+                console.log("Item not found for markerID:", URL);
+                return null;
             }
         }
-        return null;
     }
+    return null;
+}
+
     
 
     const toggleSave = (index) => {

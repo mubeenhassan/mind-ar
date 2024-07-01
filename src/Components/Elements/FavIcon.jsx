@@ -10,7 +10,7 @@ const FavIcon = ({ id, targetId, toggleSave, initialData, dataFromUrl }) => {
   const isFav = () => {
     const existingFav = (initialData || dataFromUrl || JSON.parse(localStorage.getItem("savedDataNew"))) ?? [];
     const existingIndex = existingFav.findIndex(
-      (item) => item.markerID === targetId
+      (item) => item.markerID == targetId
     );
     if (
       existingIndex !== -1 &&
